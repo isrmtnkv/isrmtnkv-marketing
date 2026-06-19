@@ -1,0 +1,50 @@
+Visual QA for partner-referral-kp.pptx
+
+Mechanical
+- PPTX exists and is non-empty: yes, outputs/partner-referral-kp.pptx, 52 KB.
+- Expected slide count: 8.
+- Actual slide count from PPTX package: 8.
+- Every final slide rendered: yes, slide-01.png through slide-08.png.
+- Contact sheet or montage reviewed: yes, deck-montage.webp plus individual checks for slides 1, 2, 3, 4, 5, 6, 7 and 8.
+- Layout JSON reviewed/available: yes, 8 layout JSON files.
+- Intended fonts present in exported PPTX XML: yes, Aptos and Aptos Display found.
+- slide-plan.txt reviewed: yes.
+- source-notes.txt reviewed: yes.
+- Accepted runtime/export caveats: artifact-tool writes an inspect ndjson next to PPTX; it was moved to scratch/archived to keep outputs clean.
+
+Deck-Level
+- Title-only storyline makes sense: yes.
+- One coherent grid, margin, footer, and page-marker system: yes.
+- Repeated slide types use consistent spacing and hierarchy: yes.
+- No three-slide run repeats the same macro-layout without intent: yes; slides alternate cover, scenario cards, pricing grid, qualification split, financial grid, process cards, rules grid, intro script.
+- Sources, dates, units, and assumptions are clear where needed: yes; ruble pricing and 20% check assumptions are shown.
+- Material claims map to source-notes.txt: yes; all facts are user-provided or explicitly marked authoring assumptions.
+- User-facing citations needed: no external sources used.
+
+Slide-Level
+- Title states the takeaway: yes.
+- One dominant proof object is immediately findable: yes.
+- Body copy directly supports the title: yes.
+- No paragraph exists only to fill space: yes.
+- Text stays inside allotted boxes: yes after fixes.
+- No unexpected wrapping, clipping, hidden overflow, or low contrast: pass in rendered slides.
+- Font family matches intended design system: yes.
+- Filled cards, panels, and callouts have clear padding: yes.
+- No object covers labels, data, stage names, or body text: pass after fixes to slides 1 and 5.
+- Images: none used; deck uses editable shapes and text.
+
+Charts, Tables, And Diagrams
+- Chart values, labels, and visual marks use the same source data: not applicable; financial grid is shape-based because exact editable card layout was more readable than a native chart.
+- Axes, units, baselines, comparisons are honest: yes; financial assumptions are footnoted.
+- Tables preserve row/column grammar and remain readable: yes.
+
+Issue Ledger
+| Issue | Slide(s) | Severity | Fix path | Status |
+|---|---:|---|---|---|
+| Lead paragraph overlapped KPI cards on cover | 1 | fix-before-delivery | Shortened lead and moved KPI row lower | fixed |
+| Footnote overlapped last row in partner income grid | 5 | fix-before-delivery | Compressed table rows and moved footnote | fixed |
+
+Final Decision
+- Pass/fail: pass.
+- QA ledger saved as work/presentations/partner-proposal-deck/tmp/qa/visual-qa.txt.
+- Remaining compromises to disclose: contact placeholders @your_username and your@email.com remain for user replacement; prices are approximate commercial ranges.

@@ -1,0 +1,33 @@
+Source notes for partner referral commercial proposal deck
+
+User-provided context:
+- The offer is for freelancers and professionals: developers, SMM specialists, designers, top managers, PMs, consultants.
+- The presenter is a freelance/outsource marketer.
+- Partner mechanics: a partner refers a client for ad/marketing work; if the client starts paid work with the marketer, the partner receives 20% of the paid check.
+- Visual reference: dark green dashboard style with lime accent, glass panels, large typography, small KPI/cards.
+- User correction: the deliverable must be a presentation / commercial proposal deck, not a browser landing page.
+- User correction: reduce duplicated generic copy; add useful inputs and clear numbers.
+- User requested a separate block listing tasks the marketer closes and approximate task costs.
+- User requested a clear grid showing partner income scenarios:
+  - If a partner has 2-4 new clients per month, offers them a marketer, 2-3 agree; 20% of the check is on average 5,000-15,000 RUB per referral, total about 15,000-45,000 RUB.
+  - Add larger scenarios for 6-8 new clients per month and so on.
+
+Authoring assumptions used in the deck:
+- Currency: Russian rubles.
+- "Check" means the amount the referred client pays to the marketer for the first paid project/month or agreed repeated period.
+- The average partner payout of 5,000-15,000 RUB corresponds to an approximate client check of 25,000-75,000 RUB because 20% x 25,000-75,000 = 5,000-15,000.
+- Larger task checks may produce a payout higher than 15,000 RUB; the deck uses 5,000-15,000 RUB as the normal conservative average and highlights exact calculation from actual paid check.
+- Prices are presented as approximate commercial ranges and should be adapted by niche, ad channels, scope, ad budget, landing/CRM readiness, and analytics complexity.
+
+Pricing ranges used:
+- Express audit of advertising, landing page, funnel and analytics: 15,000-25,000 RUB.
+- Marketing strategy and 30-day launch plan: 25,000-45,000 RUB.
+- Advertising launch in one channel: 35,000-60,000 RUB.
+- Multi-channel launch package: 70,000-120,000 RUB.
+- Monthly ad management for one channel: 40,000-70,000 RUB/month.
+- Monthly management of 2-3 channels with analytics: 80,000-150,000 RUB/month.
+- Landing page, offer and lead form improvement: 30,000-80,000 RUB.
+- Analytics, dashboards, goals and CRM handoff setup: 25,000-70,000 RUB.
+- Funnel relaunch / growth sprint: 90,000-180,000 RUB.
+
+No external facts, testimonials, case results, logos, or client names were used.

@@ -1,0 +1,1384 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Партнерское КП - маркетолог на аутсорсе</title>
+    <meta
+      name="description"
+      content="Партнерское коммерческое предложение для разработчиков, дизайнеров, SMM-специалистов и топ-менеджеров: 20% с оплаченного чека за приведенного клиента."
+    >
+    <style>
+      :root {
+        --ink: #08110c;
+        --ink-soft: #101c13;
+        --panel: rgba(18, 32, 20, 0.72);
+        --panel-solid: #152317;
+        --panel-lit: rgba(53, 83, 45, 0.58);
+        --line: rgba(226, 246, 204, 0.16);
+        --line-strong: rgba(226, 246, 204, 0.28);
+        --cream: #f4f7ea;
+        --muted: rgba(244, 247, 234, 0.68);
+        --dim: rgba(244, 247, 234, 0.46);
+        --lime: #d8ff64;
+        --mint: #b8ef97;
+        --leaf: #5baa4e;
+        --coral: #ff7e6f;
+        --amber: #ffc766;
+        --sky: #2aa6e8;
+        --radius: 8px;
+        --shadow: 0 28px 80px rgba(0, 0, 0, 0.32);
+        --wrap: 1360px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        color: var(--cream);
+        background:
+          radial-gradient(circle at 52% 22%, rgba(166, 255, 100, 0.58) 0, rgba(85, 181, 76, 0.47) 23rem, rgba(16, 42, 22, 0.18) 42rem, transparent 58rem),
+          linear-gradient(132deg, #07100b 0%, #102217 28%, #356f35 53%, #132312 78%, #08110c 100%);
+        font-family: Inter, Manrope, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+        line-height: 1.45;
+        letter-spacing: 0;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.026) 1px, transparent 1px);
+        background-size: 96px 96px;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent 72%);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        overflow: hidden;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        margin: 0 auto;
+        max-width: calc(var(--wrap) + 56px);
+        padding: 14px 28px 0;
+      }
+
+      .nav {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        min-height: 70px;
+        padding: 10px 12px 10px 16px;
+        background: rgba(7, 15, 10, 0.79);
+        border: 1px solid rgba(231, 255, 210, 0.13);
+        border-radius: var(--radius);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(18px);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+        font-size: 0.86rem;
+        font-weight: 850;
+        text-transform: uppercase;
+        letter-spacing: 0;
+      }
+
+      .brand-mark {
+        position: relative;
+        width: 34px;
+        height: 34px;
+        flex: 0 0 34px;
+        border-radius: 8px;
+        background: linear-gradient(145deg, #d9ff79, #9ff1b0);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45);
+      }
+
+      .brand-mark::before,
+      .brand-mark::after {
+        content: "";
+        position: absolute;
+        top: 10px;
+        width: 5px;
+        height: 14px;
+        border-radius: 999px;
+        background: #24452c;
+      }
+
+      .brand-mark::before {
+        left: 11px;
+      }
+
+      .brand-mark::after {
+        right: 11px;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 6px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.055);
+      }
+
+      .nav-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+        padding: 0 18px;
+        color: rgba(244, 247, 234, 0.74);
+        border-radius: 7px;
+        font-size: 0.86rem;
+        font-weight: 760;
+      }
+
+      .nav-links a:hover,
+      .nav-links a:focus-visible {
+        color: var(--cream);
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+
+      .rate-chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 56px;
+        min-height: 48px;
+        padding: 0 14px;
+        color: var(--cream);
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.055);
+        font-size: 1rem;
+        font-weight: 850;
+      }
+
+      .telegram-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: var(--radius);
+        background: linear-gradient(145deg, #30b3f1, #168fd7);
+        color: #fff;
+        font-size: 1.22rem;
+        font-weight: 900;
+        box-shadow: 0 12px 28px rgba(29, 153, 221, 0.24);
+      }
+
+      .wrap {
+        width: min(var(--wrap), calc(100% - 56px));
+        margin: 0 auto;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 0.92fr) minmax(500px, 0.78fr);
+        gap: 44px;
+        align-items: center;
+        padding: 88px 0 48px;
+      }
+
+      .hero-copy {
+        min-width: 0;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 42px;
+        padding: 0 14px;
+        border: 1px solid rgba(215, 255, 100, 0.2);
+        border-radius: var(--radius);
+        background: rgba(8, 17, 12, 0.76);
+        color: rgba(244, 247, 234, 0.82);
+        font-size: 0.95rem;
+        font-weight: 760;
+        box-shadow: 0 16px 44px rgba(0, 0, 0, 0.18);
+      }
+
+      .eyebrow::before,
+      .mini-dot {
+        content: "";
+        width: 10px;
+        height: 10px;
+        flex: 0 0 10px;
+        border-radius: 50%;
+        background: var(--lime);
+        box-shadow: 0 0 18px rgba(216, 255, 100, 0.7);
+      }
+
+      h1 {
+        max-width: 850px;
+        margin: 38px 0 24px;
+        font-size: 5.15rem;
+        line-height: 0.96;
+        font-weight: 880;
+        letter-spacing: 0;
+      }
+
+      .accent {
+        color: var(--lime);
+      }
+
+      .lead {
+        max-width: 700px;
+        margin: 0;
+        color: rgba(244, 247, 234, 0.76);
+        font-size: 1.35rem;
+        line-height: 1.55;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 34px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 56px;
+        padding: 0 24px;
+        border-radius: var(--radius);
+        border: 1px solid transparent;
+        font-size: 1rem;
+        font-weight: 830;
+        transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+      }
+
+      .button-primary {
+        background: var(--lime);
+        color: #0c160d;
+        box-shadow: 0 18px 42px rgba(216, 255, 100, 0.23);
+      }
+
+      .button-secondary {
+        background: rgba(255, 255, 255, 0.09);
+        border-color: var(--line-strong);
+        color: var(--cream);
+      }
+
+      .quick-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 40px;
+      }
+
+      .fact-card {
+        min-height: 128px;
+        padding: 18px;
+        border: 1px solid rgba(232, 255, 215, 0.19);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.075);
+        backdrop-filter: blur(12px);
+      }
+
+      .fact-card strong {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--cream);
+        font-size: 1.08rem;
+        line-height: 1.2;
+      }
+
+      .fact-card span {
+        display: block;
+        color: rgba(244, 247, 234, 0.63);
+        font-size: 0.92rem;
+      }
+
+      .visual {
+        position: relative;
+        min-height: 650px;
+      }
+
+      .dashboard-shell {
+        position: absolute;
+        right: -10px;
+        bottom: 0;
+        width: min(650px, 100%);
+        min-height: 520px;
+        padding: 58px 24px 24px;
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius);
+        background: linear-gradient(180deg, rgba(34, 52, 28, 0.9), rgba(20, 34, 22, 0.84));
+        box-shadow: var(--shadow);
+        transform: rotate(-0.8deg);
+      }
+
+      .window-dots {
+        position: absolute;
+        top: 32px;
+        left: 24px;
+        display: flex;
+        gap: 9px;
+      }
+
+      .window-dots i {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+
+      .window-dots i:nth-child(1) {
+        background: var(--coral);
+      }
+
+      .window-dots i:nth-child(2) {
+        background: var(--amber);
+      }
+
+      .window-dots i:nth-child(3) {
+        background: var(--mint);
+      }
+
+      .system-chip {
+        position: absolute;
+        right: 24px;
+        top: 24px;
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        min-height: 40px;
+        padding: 0 14px;
+        border: 1px solid rgba(216, 255, 100, 0.24);
+        border-radius: var(--radius);
+        background: rgba(216, 255, 100, 0.08);
+        color: rgba(244, 247, 234, 0.7);
+        font-size: 0.88rem;
+        font-weight: 730;
+      }
+
+      .dashboard-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(170px, 0.74fr);
+        gap: 14px;
+      }
+
+      .process-panel,
+      .speed-panel,
+      .today-panel {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .process-panel {
+        min-height: 390px;
+        padding: 24px;
+      }
+
+      .panel-label {
+        display: block;
+        margin-bottom: 18px;
+        color: rgba(244, 247, 234, 0.52);
+        font-size: 0.8rem;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .process-title {
+        margin: 0 0 26px;
+        font-size: 2.35rem;
+        line-height: 1.08;
+        font-weight: 880;
+      }
+
+      .chart-card {
+        position: relative;
+        height: 168px;
+        overflow: hidden;
+        border-radius: var(--radius);
+        background:
+          linear-gradient(135deg, rgba(194, 255, 170, 0.24), rgba(132, 188, 255, 0.14)),
+          rgba(235, 255, 219, 0.08);
+      }
+
+      .chart-card::before,
+      .chart-card::after {
+        content: "";
+        position: absolute;
+        bottom: -48px;
+        width: 220px;
+        height: 150px;
+        border-radius: 110px 110px 0 0;
+        background: rgba(226, 255, 177, 0.24);
+      }
+
+      .chart-card::before {
+        left: -18px;
+      }
+
+      .chart-card::after {
+        right: -18px;
+        height: 210px;
+        background: rgba(161, 219, 176, 0.24);
+      }
+
+      .metric-rows {
+        display: grid;
+        gap: 9px;
+        margin-top: 18px;
+      }
+
+      .metric-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 48px;
+        padding: 0 16px;
+        border: 1px solid rgba(244, 247, 234, 0.08);
+        border-radius: var(--radius);
+        background: rgba(8, 17, 12, 0.36);
+        color: rgba(244, 247, 234, 0.55);
+        font-weight: 720;
+      }
+
+      .metric-row b {
+        color: var(--lime);
+        font-size: 1.12rem;
+      }
+
+      .side-stack {
+        display: grid;
+        gap: 14px;
+      }
+
+      .speed-panel {
+        min-height: 188px;
+        padding: 24px;
+      }
+
+      .speed-number {
+        margin: 2px 0 10px;
+        color: var(--lime);
+        font-size: 4.2rem;
+        line-height: 0.9;
+        font-weight: 880;
+      }
+
+      .speed-panel p {
+        margin: 0;
+        color: rgba(244, 247, 234, 0.63);
+        font-size: 0.95rem;
+      }
+
+      .today-panel {
+        padding: 22px;
+      }
+
+      .check-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .check-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-height: 46px;
+        padding: 0 12px;
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.055);
+        color: rgba(244, 247, 234, 0.72);
+        font-weight: 720;
+      }
+
+      .check-row.is-on {
+        background: var(--lime);
+        color: #101b10;
+      }
+
+      .box {
+        width: 18px;
+        height: 18px;
+        flex: 0 0 18px;
+        border-radius: 5px;
+        border: 2px solid currentColor;
+        opacity: 0.55;
+      }
+
+      .floating-note {
+        position: absolute;
+        left: 18px;
+        top: 0;
+        width: 300px;
+        padding: 24px;
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius);
+        background: rgba(18, 30, 18, 0.93);
+        box-shadow: var(--shadow);
+      }
+
+      .floating-note span {
+        display: block;
+        margin-bottom: 14px;
+        color: rgba(244, 247, 234, 0.48);
+        font-weight: 720;
+      }
+
+      .floating-note strong {
+        display: block;
+        color: var(--cream);
+        font-size: 1.82rem;
+        line-height: 1.08;
+      }
+
+      .floating-note .tagline {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .floating-note .tagline b {
+        padding: 9px 12px;
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius);
+        color: rgba(244, 247, 234, 0.58);
+        font-size: 0.76rem;
+        text-transform: uppercase;
+      }
+
+      section {
+        padding: 54px 0;
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.75fr) minmax(280px, 0.4fr);
+        gap: 32px;
+        align-items: end;
+        margin-bottom: 24px;
+      }
+
+      .section-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 16px;
+        color: var(--lime);
+        font-size: 0.82rem;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin: 0;
+        color: var(--cream);
+        font-size: 2.48rem;
+        line-height: 1.05;
+        font-weight: 880;
+        letter-spacing: 0;
+      }
+
+      .section-head p {
+        margin: 0;
+        color: rgba(244, 247, 234, 0.68);
+        font-size: 1.02rem;
+      }
+
+      .audience-grid,
+      .scope-grid,
+      .rules-grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      .audience-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .audience-card,
+      .scope-card,
+      .rule-card {
+        border: 1px solid rgba(232, 255, 215, 0.17);
+        border-radius: var(--radius);
+        background: rgba(10, 20, 13, 0.54);
+        backdrop-filter: blur(14px);
+      }
+
+      .audience-card {
+        min-height: 228px;
+        padding: 22px;
+      }
+
+      .audience-card .role {
+        display: inline-flex;
+        min-height: 34px;
+        align-items: center;
+        padding: 0 10px;
+        border: 1px solid rgba(216, 255, 100, 0.2);
+        border-radius: var(--radius);
+        color: var(--lime);
+        background: rgba(216, 255, 100, 0.07);
+        font-size: 0.82rem;
+        font-weight: 780;
+      }
+
+      .audience-card h3,
+      .scope-card h3,
+      .rule-card h3 {
+        margin: 22px 0 10px;
+        color: var(--cream);
+        font-size: 1.38rem;
+        line-height: 1.12;
+      }
+
+      .audience-card p,
+      .scope-card p,
+      .rule-card p {
+        margin: 0;
+        color: rgba(244, 247, 234, 0.64);
+        font-size: 0.96rem;
+      }
+
+      .mechanics {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 0.38fr);
+        gap: 12px;
+        align-items: stretch;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .step {
+        min-height: 220px;
+        padding: 22px;
+        border: 1px solid rgba(232, 255, 215, 0.17);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .step-num {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        margin-bottom: 30px;
+        border: 1px solid rgba(216, 255, 100, 0.28);
+        border-radius: var(--radius);
+        background: rgba(216, 255, 100, 0.09);
+        color: var(--lime);
+        font-size: 1.05rem;
+        font-weight: 900;
+      }
+
+      .step h3 {
+        margin: 0 0 10px;
+        font-size: 1.18rem;
+        line-height: 1.15;
+      }
+
+      .step p {
+        margin: 0;
+        color: rgba(244, 247, 234, 0.63);
+        font-size: 0.94rem;
+      }
+
+      .commission-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 220px;
+        padding: 24px;
+        border: 1px solid rgba(216, 255, 100, 0.28);
+        border-radius: var(--radius);
+        background: linear-gradient(180deg, rgba(216, 255, 100, 0.18), rgba(13, 25, 15, 0.68));
+      }
+
+      .commission-box span {
+        color: rgba(244, 247, 234, 0.58);
+        font-size: 0.88rem;
+        font-weight: 780;
+        text-transform: uppercase;
+      }
+
+      .commission-box strong {
+        color: var(--lime);
+        font-size: 5rem;
+        line-height: 0.92;
+        font-weight: 900;
+      }
+
+      .commission-box p {
+        max-width: 260px;
+        margin: 18px 0 0;
+        color: rgba(244, 247, 234, 0.72);
+      }
+
+      .scope-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .scope-card {
+        min-height: 234px;
+        padding: 24px;
+      }
+
+      .scope-card .big-word {
+        display: block;
+        margin-bottom: 22px;
+        color: rgba(216, 255, 100, 0.88);
+        font-size: 3.1rem;
+        line-height: 0.9;
+        font-weight: 900;
+      }
+
+      .rules-grid {
+        grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      }
+
+      .rule-card {
+        min-height: 190px;
+        padding: 24px;
+      }
+
+      .rule-card.is-bright {
+        background: var(--lime);
+        color: #0a130b;
+        border-color: transparent;
+      }
+
+      .rule-card.is-bright h3,
+      .rule-card.is-bright p {
+        color: #0a130b;
+      }
+
+      .final-cta {
+        margin: 16px 0 70px;
+        padding: 34px;
+        border: 1px solid rgba(232, 255, 215, 0.2);
+        border-radius: var(--radius);
+        background:
+          linear-gradient(90deg, rgba(216, 255, 100, 0.16), rgba(255, 255, 255, 0.055)),
+          rgba(8, 17, 12, 0.7);
+      }
+
+      .final-cta-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 28px;
+        align-items: center;
+      }
+
+      .final-cta h2 {
+        font-size: 2.1rem;
+      }
+
+      .final-cta p {
+        max-width: 730px;
+        margin: 12px 0 0;
+        color: rgba(244, 247, 234, 0.68);
+      }
+
+      .contact-card {
+        display: grid;
+        gap: 8px;
+        min-width: 280px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .contact-card span {
+        color: rgba(244, 247, 234, 0.5);
+        font-size: 0.82rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .contact-card b {
+        color: var(--cream);
+        font-size: 1.16rem;
+      }
+
+      .print-note {
+        display: none;
+      }
+
+      @media (max-width: 1180px) {
+        .nav {
+          grid-template-columns: 1fr auto;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          padding-top: 66px;
+        }
+
+        .visual {
+          min-height: 610px;
+        }
+
+        .dashboard-shell {
+          left: 50%;
+          right: auto;
+          transform: translateX(-50%) rotate(-0.5deg);
+        }
+
+        .quick-grid,
+        .audience-grid,
+        .steps {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .mechanics {
+          grid-template-columns: 1fr;
+        }
+
+        .commission-box {
+          min-height: 180px;
+        }
+      }
+
+      @media (max-width: 820px) {
+        .topbar {
+          padding: 10px 12px 0;
+        }
+
+        .wrap {
+          width: min(100% - 24px, var(--wrap));
+        }
+
+        .nav {
+          min-height: 62px;
+          padding: 8px;
+        }
+
+        .brand {
+          gap: 10px;
+          font-size: 0.74rem;
+        }
+
+        .brand-mark {
+          width: 32px;
+          height: 32px;
+          flex-basis: 32px;
+        }
+
+        .rate-chip {
+          min-width: 48px;
+          min-height: 42px;
+          padding: 0 10px;
+          font-size: 0.9rem;
+        }
+
+        .telegram-btn {
+          width: 42px;
+          height: 42px;
+        }
+
+        .hero {
+          gap: 30px;
+          padding: 54px 0 34px;
+        }
+
+        .eyebrow {
+          min-height: 38px;
+          align-items: flex-start;
+          padding: 10px 12px;
+          font-size: 0.84rem;
+        }
+
+        h1 {
+          margin-top: 28px;
+          font-size: 3.05rem;
+          line-height: 0.98;
+        }
+
+        .lead {
+          font-size: 1.05rem;
+        }
+
+        .button {
+          width: 100%;
+          min-height: 54px;
+        }
+
+        .quick-grid,
+        .audience-grid,
+        .scope-grid,
+        .rules-grid,
+        .section-head,
+        .final-cta-inner {
+          grid-template-columns: 1fr;
+        }
+
+        .fact-card,
+        .audience-card,
+        .scope-card,
+        .rule-card {
+          min-height: auto;
+        }
+
+        .visual {
+          min-height: auto;
+          padding-top: 0;
+        }
+
+        .dashboard-shell,
+        .floating-note {
+          position: relative;
+          left: auto;
+          right: auto;
+          top: auto;
+          bottom: auto;
+          width: 100%;
+          transform: none;
+        }
+
+        .floating-note {
+          margin-bottom: 12px;
+        }
+
+        .dashboard-shell {
+          min-height: auto;
+          padding: 58px 14px 14px;
+        }
+
+        .dashboard-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .process-title {
+          font-size: 1.95rem;
+        }
+
+        .section-head {
+          align-items: start;
+          gap: 12px;
+        }
+
+        h2 {
+          font-size: 2rem;
+        }
+
+        .steps {
+          grid-template-columns: 1fr;
+        }
+
+        .step {
+          min-height: auto;
+        }
+
+        .step-num {
+          margin-bottom: 20px;
+        }
+
+        .commission-box strong {
+          font-size: 4rem;
+        }
+
+        .final-cta {
+          margin-bottom: 36px;
+          padding: 22px;
+        }
+
+        .contact-card {
+          min-width: 0;
+        }
+      }
+
+      @media (max-width: 430px) {
+        .brand span {
+          max-width: 150px;
+        }
+
+        h1 {
+          font-size: 2.52rem;
+        }
+
+        .process-title {
+          font-size: 1.68rem;
+        }
+
+        .system-chip {
+          right: 14px;
+          padding: 0 10px;
+          font-size: 0.78rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .button {
+          transition: none;
+        }
+
+        .button:hover {
+          transform: none;
+        }
+      }
+
+      @media print {
+        body {
+          background: #0b130d;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        .topbar {
+          position: static;
+        }
+
+        .button {
+          box-shadow: none;
+        }
+
+        section {
+          break-inside: avoid;
+          padding: 30px 0;
+        }
+
+        .hero {
+          padding-top: 52px;
+        }
+
+        .print-note {
+          display: block;
+          color: rgba(244, 247, 234, 0.55);
+          font-size: 0.86rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <nav class="nav" aria-label="Основная навигация">
+          <a class="brand" href="#top" aria-label="В начало">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <span>Маркетолог на аутсорсе</span>
+          </a>
+
+          <div class="nav-links" aria-label="Разделы КП">
+            <a href="#audience">Кому</a>
+            <a href="#mechanics">20%</a>
+            <a href="#scope">Что беру</a>
+            <a href="#contact">Контакт</a>
+          </div>
+
+          <div class="nav-actions">
+            <span class="rate-chip">20%</span>
+            <a class="telegram-btn" href="#contact" aria-label="Контакт в Telegram">↗</a>
+          </div>
+        </nav>
+      </header>
+
+      <main id="top">
+        <div class="wrap hero">
+          <div class="hero-copy">
+            <div class="eyebrow">Партнерское КП для разработчиков, дизайнеров, SMM и руководителей</div>
+            <h1>Передавайте клиентов на рекламу и получайте <span class="accent">20% с чека</span></h1>
+            <p class="lead">
+              Вы закрываете свою часть проекта, а я забираю на себя трафик,
+              воронку и аналитику. Если клиент начинает работать со мной,
+              я фиксирую источник и выплачиваю партнерское вознаграждение
+              после оплаты.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button button-primary" href="#contact">Обсудить партнерство ↗</a>
+              <a class="button button-secondary" href="#mechanics">Как это работает</a>
+            </div>
+
+            <div class="quick-grid" aria-label="Ключевые условия">
+              <article class="fact-card">
+                <strong>Кому подходит</strong>
+                <span>Разработчикам, дизайнерам, SMM, PM, консультантам и топ-менеджерам.</span>
+              </article>
+              <article class="fact-card">
+                <strong>Что беру</strong>
+                <span>Трафик, офферы, лендинги, CRM-логику, аналитику и гипотезы роста.</span>
+              </article>
+              <article class="fact-card">
+                <strong>Выплата</strong>
+                <span>20% с оплаченного чека за клиента, которого вы привели.</span>
+              </article>
+              <article class="fact-card">
+                <strong>Прозрачность</strong>
+                <span>Фиксируем источник, статус сделки и момент выплаты заранее.</span>
+              </article>
+            </div>
+          </div>
+
+          <aside class="visual" aria-label="Визуальная схема партнерства">
+            <div class="floating-note">
+              <span>Фокус партнерства</span>
+              <strong>клиенту нужны заявки, вам нужен честный процент</strong>
+              <div class="tagline" aria-label="Ключевые метрики">
+                <b>CPL</b>
+                <b>CAC</b>
+                <b>ROMI</b>
+              </div>
+            </div>
+
+            <div class="dashboard-shell">
+              <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="system-chip"><span class="mini-dot"></span> система роста</div>
+
+              <div class="dashboard-grid">
+                <div class="process-panel">
+                  <span class="panel-label">Процесс</span>
+                  <p class="process-title">Интро → аудит → запуск → первые заявки</p>
+                  <div class="chart-card" aria-hidden="true"></div>
+                  <div class="metric-rows">
+                    <div class="metric-row"><span>качество лида</span><b>видно</b></div>
+                    <div class="metric-row"><span>воронка</span><b>под контролем</b></div>
+                    <div class="metric-row"><span>выплата</span><b>после оплаты</b></div>
+                  </div>
+                </div>
+
+                <div class="side-stack">
+                  <div class="speed-panel">
+                    <span class="panel-label">Партнеру</span>
+                    <div class="speed-number">20</div>
+                    <p>процентов с оплаченного чека за приведенного клиента.</p>
+                  </div>
+
+                  <div class="today-panel">
+                    <span class="panel-label">Подходит, если</span>
+                    <div class="check-list">
+                      <div class="check-row is-on"><span class="box"></span> есть сайт</div>
+                      <div class="check-row is-on"><span class="box"></span> нужны заявки</div>
+                      <div class="check-row"><span class="box"></span> нужна аналитика</div>
+                      <div class="check-row"><span class="box"></span> пора вести рекламу</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <section id="audience">
+          <div class="wrap">
+            <div class="section-head">
+              <div>
+                <div class="section-kicker"><span class="mini-dot"></span> кому отправлять</div>
+                <h2>Вы уже рядом с клиентом в момент, когда ему нужен маркетинг</h2>
+              </div>
+              <p>
+                После сайта, дизайна, SMM-старта или стратегической сессии у бизнеса
+                часто появляется следующий вопрос: где брать заявки и как считать результат.
+              </p>
+            </div>
+
+            <div class="audience-grid">
+              <article class="audience-card">
+                <span class="role">Разработчик</span>
+                <h3>Сайт готов, трафика еще нет</h3>
+                <p>Вы передаете клиента на рекламу, а я помогаю превратить новый сайт в канал заявок.</p>
+              </article>
+              <article class="audience-card">
+                <span class="role">Дизайнер</span>
+                <h3>Лендинг выглядит сильнее, чем работает</h3>
+                <p>Забираю гипотезы, оффер, аналитику и запуск, чтобы дизайн начал приносить лиды.</p>
+              </article>
+              <article class="audience-card">
+                <span class="role">SMM</span>
+                <h3>Контент есть, нужна платная воронка</h3>
+                <p>Подключаю рекламные каналы, тесты, ретаргетинг и связку с продажами.</p>
+              </article>
+              <article class="audience-card">
+                <span class="role">Руководитель</span>
+                <h3>Нужен подрядчик без лишней суеты</h3>
+                <p>Беру коммуникацию, цифры и запуск на себя, чтобы вам было спокойно за рекомендацию.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="mechanics">
+          <div class="wrap">
+            <div class="section-head">
+              <div>
+                <div class="section-kicker"><span class="mini-dot"></span> механика</div>
+                <h2>Понятная схема без серых зон</h2>
+              </div>
+              <p>
+                Никакой сложной партнерской программы: вы делаете интро, я веду сделку,
+                после оплаты клиента вы получаете свою долю.
+              </p>
+            </div>
+
+            <div class="mechanics">
+              <div class="steps">
+                <article class="step">
+                  <div class="step-num">1</div>
+                  <h3>Вы делаете интро</h3>
+                  <p>Передаете контакт или добавляете меня в общий чат с клиентом.</p>
+                </article>
+                <article class="step">
+                  <div class="step-num">2</div>
+                  <h3>Я провожу аудит</h3>
+                  <p>Смотрю сайт, воронку, каналы, бюджет и предлагаю понятный план.</p>
+                </article>
+                <article class="step">
+                  <div class="step-num">3</div>
+                  <h3>Клиент оплачивает</h3>
+                  <p>Работа стартует только после согласования задачи и первого чека.</p>
+                </article>
+                <article class="step">
+                  <div class="step-num">4</div>
+                  <h3>Вы получаете выплату</h3>
+                  <p>Перевожу 20% с оплаченного чека в согласованном формате.</p>
+                </article>
+              </div>
+
+              <aside class="commission-box">
+                <div>
+                  <span>Вознаграждение</span>
+                  <strong>20%</strong>
+                  <p>с оплаченного чека за приведенного клиента. Срок и количество выплат фиксируем до старта.</p>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <section id="scope">
+          <div class="wrap">
+            <div class="section-head">
+              <div>
+                <div class="section-kicker"><span class="mini-dot"></span> зона ответственности</div>
+                <h2>Я веду маркетинг так, чтобы рекомендация выглядела сильной</h2>
+              </div>
+              <p>
+                Главная задача - не просто запустить рекламу, а собрать управляемую систему:
+                от гипотезы до цифр, по которым можно принимать решения.
+              </p>
+            </div>
+
+            <div class="scope-grid">
+              <article class="scope-card">
+                <span class="big-word">Трафик</span>
+                <h3>Каналы под задачу</h3>
+                <p>Яндекс, VK, Telegram, Avito и другие площадки, где можно проверить спрос и получить заявки.</p>
+              </article>
+              <article class="scope-card">
+                <span class="big-word">Воронка</span>
+                <h3>Оффер и путь лида</h3>
+                <p>Связка рекламного сообщения, посадочной страницы, формы, CRM и обработки заявок.</p>
+              </article>
+              <article class="scope-card">
+                <span class="big-word">Цифры</span>
+                <h3>Решения по данным</h3>
+                <p>CPL, CAC, конверсия, качество лидов, ROMI и понятные выводы после тестов.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="rules">
+          <div class="wrap">
+            <div class="section-head">
+              <div>
+                <div class="section-kicker"><span class="mini-dot"></span> правила</div>
+                <h2>Честно к партнеру и аккуратно к клиенту</h2>
+              </div>
+              <p>
+                Для вас важно не потерять доверие клиента. Поэтому коммуникация,
+                ожидания и деньги фиксируются до начала работы.
+              </p>
+            </div>
+
+            <div class="rules-grid">
+              <article class="rule-card is-bright">
+                <h3>Источник закрепляем сразу</h3>
+                <p>Если клиент пришел от вас, это фиксируется в переписке или договоренности до первого созвона.</p>
+              </article>
+              <article class="rule-card">
+                <h3>Без перехвата</h3>
+                <p>Я не забираю вашу основную услугу и не конкурирую с вами за ваш участок работы.</p>
+              </article>
+              <article class="rule-card">
+                <h3>Статус прозрачен</h3>
+                <p>Вы понимаете, дошли ли до созвона, предложения, оплаты и выплаты.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact">
+          <div class="wrap">
+            <div class="final-cta">
+              <div class="final-cta-inner">
+                <div>
+                  <h2>Есть клиент, которому пора навести порядок в рекламе?</h2>
+                  <p>
+                    Напишите мне, коротко опишите проект и контекст. Я быстро скажу,
+                    есть ли смысл идти в аудит, какой может быть первый шаг и как фиксируем партнерские 20%.
+                  </p>
+                  <p class="print-note">Для отправки как PDF: откройте страницу в браузере и выберите печать в PDF.</p>
+                </div>
+
+                <div class="contact-card">
+                  <span>Контакт</span>
+                  <b>Telegram: @your_username</b>
+                  <b>Email: your@email.com</b>
+                  <a class="button button-primary" href="https://t.me/your_username">Написать в Telegram ↗</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

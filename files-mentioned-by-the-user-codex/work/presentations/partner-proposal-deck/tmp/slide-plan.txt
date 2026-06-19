@@ -1,0 +1,53 @@
+Mode: create
+Final file: outputs/partner-referral-kp.pptx
+Slide size: 1280 x 720 px, 16:9.
+Audience: developers, designers, SMM specialists, top managers, PMs and consultants who can refer clients after delivering their own work.
+Primary action: write to the marketer with a potential referral and fix partner terms before the first client call.
+
+Design system:
+- Dark base: #07100B, used for 60-70% of slide surfaces.
+- Panel green: #132317 and #21351F, used for cards and dashboard panels.
+- Lime accent: #D8FF64, used for the 20% offer, payout numbers and highlight cells.
+- Soft cream text: #F3F7EA, used for primary text.
+- Muted text: #B7C3AE, used for captions and explanations.
+- Coral signal: #FF7E6F and amber signal: #FFC766, used sparingly for status dots and secondary accents.
+- Cyan link accent: #2AA6E8, used only in contact/action areas.
+Fonts:
+- Heading: Aptos Display, 52-64 px on cover, 34-44 px on content slides.
+- Body: Aptos, 18-24 px.
+- Numeric/KPI: Aptos Display, 48-88 px.
+Signature:
+- Each slide uses an editable "dashboard proposal" motif: dark panels, lime counters, grid cards and small metric chips, adapted to PowerPoint layout rather than webpage scrolling.
+
+Slide list:
+1. Cover / partner offer:
+   Title: "Партнерское КП: 20% за клиента на маркетинг"
+   Proof object: 20% payout card and 5-15k average payout.
+   Purpose: immediately explain the offer and audience.
+2. Why this is relevant after your work:
+   Show common client moments after a site/design/SMM/startup project.
+   Purpose: help partner recognize when to offer marketer.
+3. What tasks I close:
+   Separate clear task block with approximate prices.
+   Purpose: answer "what exactly can I refer clients for and what checks are possible?"
+4. Best-fit client signals:
+   Describe when a referral is likely to convert.
+   Purpose: improve referral quality and reduce awkward introductions.
+5. Partner income grid:
+   Show scenarios by number of new clients per month and expected partner payout.
+   Purpose: make the partner's financial incentive obvious.
+6. How the referral process works:
+   Four practical steps from intro to payout.
+   Purpose: remove friction and make the first action clear.
+7. Rules and payout clarity:
+   Explain check, 20%, when payment happens, what is fixed before start.
+   Purpose: reduce trust objections.
+8. Final contact / intro script:
+   Provide concise text partner can send to client and contact placeholders.
+   Purpose: make it easy to use the deck immediately.
+
+QA requirements:
+- Every slide rendered to PNG and a montage/contact sheet.
+- Layout JSON generated for every slide.
+- Final PPTX contains editable text, shapes and tables, not full-slide bitmaps.
+- Check for text clipping, low contrast, accidental repeated copy and unclear financial assumptions.
