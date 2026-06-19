@@ -1,0 +1,2775 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Маркетолог на аутсорсе</title>
+    <meta
+      name="description"
+      content="Маркетолог на аутсорсе: реклама, аналитика, офферы, воронки и кейсы с измеримым результатом."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <style>
+      :root {
+        --bg: #090a08;
+        --bg-soft: #10120f;
+        --panel: rgba(29, 32, 27, 0.76);
+        --panel-strong: #20211f;
+        --ink: #f7f7ef;
+        --muted: rgba(247, 247, 239, 0.68);
+        --muted-2: rgba(247, 247, 239, 0.5);
+        --line: rgba(247, 247, 239, 0.14);
+        --line-strong: rgba(247, 247, 239, 0.22);
+        --lime: #d9ff72;
+        --green: #88d66c;
+        --red: #d82d2d;
+        --red-soft: rgba(216, 45, 45, 0.16);
+        --telegram: #229ed9;
+        --cream: #f2f4e9;
+        --dark-text: #11120f;
+        --shadow: 0 28px 100px rgba(0, 0, 0, 0.34);
+        --mx: 72vw;
+        --my: 18vh;
+        --scroll: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        background: var(--bg);
+      }
+
+      body {
+        min-width: 1160px;
+        margin: 0;
+        color: var(--ink);
+        font-family: Manrope, Montserrat, "Helvetica Neue", Arial, sans-serif;
+        background:
+          linear-gradient(180deg, rgba(9, 10, 8, 0.12), #090a08 52%),
+          url("./assets/signal-field.png") center top / 100% auto no-repeat,
+          var(--bg);
+        overflow-x: hidden;
+      }
+
+      body::before {
+        position: fixed;
+        inset: 0;
+        z-index: -3;
+        content: "";
+        background:
+          radial-gradient(
+            860px 560px at var(--mx) var(--my),
+            rgba(217, 255, 114, 0.16),
+            rgba(136, 214, 108, 0.07) 48%,
+            transparent 76%
+          ),
+          linear-gradient(120deg, rgba(216, 45, 45, 0.1), transparent 22%, rgba(217, 255, 114, 0.06) 64%, transparent);
+        pointer-events: none;
+        transform: translateY(calc(var(--scroll) * -0.035px));
+      }
+
+      body::after {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        content: "";
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.024) 1px, transparent 1px);
+        background-size: 96px 96px;
+        mask-image: linear-gradient(180deg, transparent, #000 18%, #000 68%, transparent);
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      input,
+      textarea {
+        font: inherit;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--lime);
+        outline-offset: 4px;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+
+      .page {
+        position: relative;
+      }
+
+      .shell {
+        width: min(1480px, calc(100% - 80px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 18px;
+        z-index: 40;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 18px;
+        align-items: center;
+        min-height: 66px;
+        margin-top: 18px;
+        padding: 10px 12px 10px 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(12, 14, 11, 0.78);
+        box-shadow: 0 18px 70px rgba(0, 0, 0, 0.28);
+        backdrop-filter: blur(24px);
+      }
+
+      .brand {
+        display: inline-flex;
+        gap: 12px;
+        align-items: center;
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .brand-mark {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, var(--lime), #8fd1c7);
+        box-shadow: 0 0 32px rgba(217, 255, 114, 0.32);
+      }
+
+      .brand-mark::before,
+      .brand-mark::after {
+        position: absolute;
+        top: 8px;
+        bottom: 8px;
+        width: 5px;
+        border-radius: 4px;
+        background: rgba(9, 10, 8, 0.78);
+        content: "";
+      }
+
+      .brand-mark::before {
+        left: 9px;
+      }
+
+      .brand-mark::after {
+        right: 9px;
+      }
+
+      .nav {
+        display: inline-flex;
+        gap: 4px;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        border: 1px solid rgba(255, 255, 255, 0.075);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.045);
+      }
+
+      .nav a {
+        padding: 10px 14px;
+        border-radius: 7px;
+        color: rgba(247, 247, 239, 0.72);
+        font-size: 13px;
+        font-weight: 700;
+        transition:
+          background 180ms ease,
+          color 180ms ease;
+      }
+
+      .nav a:hover {
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .header-actions {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: end;
+      }
+
+      .lang-toggle {
+        width: 48px;
+        height: 42px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: var(--ink);
+        font-weight: 800;
+        background: rgba(255, 255, 255, 0.055);
+        cursor: pointer;
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease;
+      }
+
+      .lang-toggle:hover {
+        transform: translateY(-2px);
+        border-color: rgba(217, 255, 114, 0.36);
+      }
+
+      .tg-icon,
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 42px;
+        border-radius: 8px;
+        font-weight: 800;
+        transition:
+          transform 190ms ease,
+          box-shadow 190ms ease,
+          border-color 190ms ease,
+          background 190ms ease;
+      }
+
+      .tg-icon {
+        width: 48px;
+        height: 42px;
+        color: #fff;
+        background: var(--telegram);
+        box-shadow: 0 16px 36px rgba(34, 158, 217, 0.24);
+      }
+
+      .tg-icon svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .tg-icon:hover,
+      .button:hover {
+        transform: translateY(-3px);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 0.94fr 1.06fr;
+        gap: 64px;
+        align-items: center;
+        min-height: 730px;
+        padding: 72px 0 56px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 26px;
+        padding: 9px 12px;
+        border: 1px solid rgba(217, 255, 114, 0.18);
+        border-radius: 8px;
+        color: rgba(247, 247, 239, 0.82);
+        font-size: 13px;
+        font-weight: 700;
+        background: rgba(10, 12, 9, 0.58);
+        backdrop-filter: blur(18px);
+      }
+
+      .pulse {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--lime);
+        box-shadow: 0 0 0 0 rgba(217, 255, 114, 0.7);
+        animation: pulse 2.2s infinite;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        max-width: 820px;
+        font-size: 86px;
+        font-weight: 800;
+        line-height: 0.98;
+        letter-spacing: 0;
+        text-wrap: balance;
+      }
+
+      .hero-title span {
+        display: block;
+      }
+
+      .hero-title .accent {
+        color: var(--lime);
+        text-shadow: 0 0 48px rgba(217, 255, 114, 0.22);
+      }
+
+      .lead {
+        max-width: 760px;
+        margin-top: 28px;
+        color: rgba(247, 247, 239, 0.74);
+        font-size: 21px;
+        line-height: 1.55;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        margin-top: 34px;
+      }
+
+      .button {
+        min-width: 214px;
+        height: 58px;
+        padding: 0 22px;
+        border: 1px solid rgba(255, 255, 255, 0.11);
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.075);
+        backdrop-filter: blur(18px);
+      }
+
+      .button.primary {
+        color: var(--dark-text);
+        background: var(--lime);
+        box-shadow: 0 20px 58px rgba(217, 255, 114, 0.22);
+      }
+
+      .button.telegram {
+        color: #fff;
+        border-color: rgba(34, 158, 217, 0.42);
+        background: rgba(34, 158, 217, 0.22);
+        box-shadow: 0 18px 46px rgba(34, 158, 217, 0.18);
+      }
+
+      .button:disabled {
+        cursor: wait;
+        opacity: 0.72;
+        transform: none;
+      }
+
+      .button:hover {
+        border-color: rgba(217, 255, 114, 0.38);
+      }
+
+      .hero-mini {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        max-width: 740px;
+        margin-top: 28px;
+      }
+
+      .mini-item {
+        min-height: 96px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.052);
+        backdrop-filter: blur(18px);
+      }
+
+      .mini-item b {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 18px;
+      }
+
+      .mini-item span {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .stage-wrap {
+        position: relative;
+        min-height: 620px;
+        perspective: 1200px;
+      }
+
+      .growth-board {
+        position: absolute;
+        top: 28px;
+        right: 0;
+        width: 684px;
+        min-height: 550px;
+        padding: 18px;
+        border: 1px solid var(--line-strong);
+        border-radius: 8px;
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.028)),
+          rgba(17, 19, 15, 0.74);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(34px) saturate(122%);
+        transform: rotateY(-6deg) rotateX(3deg);
+        animation: cockpitEnter 850ms ease both;
+      }
+
+      .board-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .window-dots {
+        display: flex;
+        gap: 7px;
+      }
+
+      .window-dots span {
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+        background: var(--lime);
+      }
+
+      .window-dots span:nth-child(1) {
+        background: #ff7b73;
+      }
+
+      .window-dots span:nth-child(2) {
+        background: #ffbd73;
+      }
+
+      .status-pill {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        padding: 7px 10px;
+        border: 1px solid rgba(217, 255, 114, 0.18);
+        border-radius: 8px;
+        color: rgba(247, 247, 239, 0.82);
+        font-size: 12px;
+        background: rgba(217, 255, 114, 0.08);
+      }
+
+      .board-grid {
+        display: grid;
+        grid-template-columns: 1.08fr 0.92fr;
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .board-panel {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.062);
+      }
+
+      .board-panel.main {
+        grid-row: span 2;
+        min-height: 344px;
+        padding: 18px;
+        background:
+          linear-gradient(160deg, rgba(217, 255, 114, 0.17), transparent 54%),
+          rgba(255, 255, 255, 0.055);
+      }
+
+      .panel-label {
+        color: rgba(247, 247, 239, 0.56);
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .panel-title {
+        max-width: 360px;
+        margin-top: 18px;
+        font-size: 32px;
+        line-height: 1.12;
+      }
+
+      .signal-map {
+        position: relative;
+        height: 166px;
+        margin-top: 24px;
+        border-radius: 8px;
+        background:
+          linear-gradient(180deg, transparent 12%, rgba(217, 255, 114, 0.16)),
+          linear-gradient(135deg, rgba(143, 209, 199, 0.18), transparent);
+        overflow: hidden;
+      }
+
+      .signal-map span {
+        position: absolute;
+        bottom: -10px;
+        width: 52%;
+        height: 72%;
+        border-radius: 50% 50% 0 0;
+        background: rgba(233, 255, 213, 0.13);
+        transform: skewX(-10deg);
+      }
+
+      .signal-map span:nth-child(1) {
+        left: -8%;
+        height: 46%;
+      }
+
+      .signal-map span:nth-child(2) {
+        left: 24%;
+        height: 66%;
+        background: rgba(217, 255, 114, 0.16);
+      }
+
+      .signal-map span:nth-child(3) {
+        right: -8%;
+        height: 86%;
+        background: rgba(143, 209, 199, 0.13);
+      }
+
+      .scan-line {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, transparent, rgba(217, 255, 114, 0.24), transparent);
+        transform: translateX(-100%);
+        animation: scan 4.6s ease-in-out infinite;
+      }
+
+      .channel-list {
+        display: grid;
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .channel {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 42px;
+        padding: 0 12px;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.15);
+      }
+
+      .channel small {
+        color: var(--muted-2);
+      }
+
+      .channel b {
+        color: var(--lime);
+      }
+
+      .metric-panel {
+        min-height: 160px;
+        padding: 16px;
+      }
+
+      .metric-panel strong {
+        display: block;
+        margin-top: 18px;
+        color: var(--lime);
+        font-size: 46px;
+        line-height: 1;
+      }
+
+      .metric-panel p,
+      .task-panel p {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .task-panel {
+        min-height: 160px;
+        padding: 16px;
+      }
+
+      .task {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        min-height: 38px;
+        margin-top: 9px;
+        padding: 0 10px;
+        border-radius: 8px;
+        color: rgba(247, 247, 239, 0.74);
+        font-size: 13px;
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .task i {
+        width: 14px;
+        height: 14px;
+        border: 1px solid rgba(247, 247, 239, 0.42);
+        border-radius: 4px;
+      }
+
+      .task.done {
+        color: var(--dark-text);
+        background: var(--lime);
+      }
+
+      .float-card {
+        position: absolute;
+        z-index: 4;
+        width: 234px;
+        padding: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 8px;
+        background: rgba(28, 31, 25, 0.74);
+        box-shadow: 0 22px 70px rgba(0, 0, 0, 0.28);
+        backdrop-filter: blur(28px);
+        animation: float 7s ease-in-out infinite;
+      }
+
+      .float-card.left {
+        top: 10px;
+        left: 90px;
+      }
+
+      .float-card.right {
+        right: -10px;
+        bottom: 72px;
+        animation-delay: -2.2s;
+      }
+
+      .float-card span {
+        color: var(--muted-2);
+        font-size: 12px;
+      }
+
+      .float-card b {
+        display: block;
+        margin-top: 10px;
+        font-size: 21px;
+        line-height: 1.12;
+      }
+
+      .chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-top: 12px;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        min-height: 32px;
+        padding: 0 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        color: rgba(247, 247, 239, 0.74);
+        font-size: 12px;
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .ticker {
+        position: relative;
+        z-index: 5;
+        overflow: hidden;
+        margin-top: -28px;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(16px);
+      }
+
+      .ticker-track {
+        display: flex;
+        width: max-content;
+        animation: ticker 34s linear infinite;
+      }
+
+      .ticker span {
+        display: inline-flex;
+        align-items: center;
+        height: 70px;
+        padding: 0 32px;
+        color: rgba(247, 247, 239, 0.68);
+        font-size: 14px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .ticker span::before {
+        width: 7px;
+        height: 7px;
+        margin-right: 18px;
+        border-radius: 999px;
+        background: var(--lime);
+        content: "";
+      }
+
+      section {
+        position: relative;
+        padding: 80px 0;
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 80px;
+        align-items: end;
+        margin-bottom: 34px;
+      }
+
+      .section-kicker {
+        display: block;
+        margin-bottom: 16px;
+        color: var(--lime);
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        max-width: 880px;
+        font-size: 58px;
+        font-weight: 800;
+        line-height: 1.03;
+        letter-spacing: 0;
+        text-wrap: balance;
+      }
+
+      .section-head p {
+        max-width: 760px;
+        color: var(--muted);
+        font-size: 19px;
+        line-height: 1.58;
+      }
+
+      .section-head-copy {
+        max-width: 760px;
+      }
+
+      .section-head-copy .button {
+        display: flex;
+        width: max-content;
+        min-width: 190px;
+        margin-top: 22px;
+      }
+
+      .stats {
+        padding-top: 70px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 80%);
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px;
+      }
+
+      .stat-card {
+        display: grid;
+        align-content: center;
+        min-height: 250px;
+        padding: 36px 42px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 8px;
+        text-align: center;
+        background: var(--panel-strong);
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+      }
+
+      .stat-value {
+        color: var(--lime);
+        font-size: 66px;
+        font-weight: 800;
+        line-height: 1;
+        text-shadow: 0 0 42px rgba(217, 255, 114, 0.16);
+      }
+
+      .stat-value .white {
+        color: var(--ink);
+      }
+
+      .stat-line {
+        width: min(520px, 84%);
+        height: 2px;
+        margin: 24px auto 22px;
+        background: rgba(255, 255, 255, 0.16);
+      }
+
+      .stat-card p {
+        color: rgba(247, 247, 239, 0.88);
+        font-size: 30px;
+        line-height: 1.36;
+      }
+
+      .stat-card small {
+        display: block;
+        margin-top: 22px;
+        color: rgba(247, 247, 239, 0.72);
+        font-size: 18px;
+        font-style: italic;
+        line-height: 1.45;
+      }
+
+      #offer {
+        position: relative;
+        overflow: hidden;
+        padding: 76px 0;
+      }
+
+      #offer::before {
+        position: absolute;
+        inset: 0;
+        content: "";
+        background:
+          linear-gradient(180deg, rgba(9, 10, 8, 0.2), rgba(9, 10, 8, 0.86)),
+          url("./assets/signal-field.png") center / cover no-repeat;
+        opacity: 0.44;
+        pointer-events: none;
+      }
+
+      #offer > .shell {
+        position: relative;
+        z-index: 1;
+      }
+
+      .mini-channel-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 22px;
+      }
+
+      .mini-channel {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        min-height: 38px;
+        padding: 6px 10px 6px 7px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        color: rgba(247, 247, 239, 0.82);
+        font-size: 13px;
+        font-weight: 800;
+        background: rgba(255, 255, 255, 0.055);
+      }
+
+      .mini-channel .channel-logo {
+        display: grid;
+        flex: 0 0 auto;
+        width: 24px;
+        height: 24px;
+        place-items: center;
+        border-radius: 6px;
+        color: #fff;
+        font-weight: 900;
+      }
+
+      .channel-logo.yandex {
+        color: #fc3f1d;
+        font-size: 17px;
+        background: #fff;
+      }
+
+      .channel-logo.vk {
+        background: #0077ff;
+      }
+
+      .channel-logo.tg {
+        background: var(--telegram);
+      }
+
+      .channel-logo.avito {
+        position: relative;
+        background: #fff;
+      }
+
+      .channel-logo.avito i {
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+      }
+
+      .channel-logo.avito i:nth-child(1) { top: 5px; left: 6px; background: #00aaff; }
+      .channel-logo.avito i:nth-child(2) { top: 6px; right: 5px; background: #8bdc53; }
+      .channel-logo.avito i:nth-child(3) { bottom: 5px; left: 7px; background: #ff4053; }
+      .channel-logo.avito i:nth-child(4) { right: 6px; bottom: 6px; background: #965ee8; }
+
+      .offer-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr 0.95fr;
+        gap: 12px;
+      }
+
+      .offer-card {
+        min-height: 292px;
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025)),
+          rgba(16, 18, 15, 0.54);
+        backdrop-filter: blur(20px);
+        transition:
+          transform 220ms ease,
+          border-color 220ms ease;
+      }
+
+      .offer-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(217, 255, 114, 0.34);
+      }
+
+      .offer-card.featured {
+        background:
+          linear-gradient(145deg, rgba(217, 255, 114, 0.14), rgba(216, 45, 45, 0.06)),
+          rgba(16, 18, 15, 0.62);
+      }
+
+      .offer-card h3 {
+        max-width: 430px;
+        font-size: 29px;
+        line-height: 1.14;
+      }
+
+      .offer-card p {
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.58;
+      }
+
+      .card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 28px;
+      }
+
+      .card-tags span {
+        padding: 7px 9px;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 8px;
+        color: rgba(247, 247, 239, 0.72);
+        font-size: 12px;
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .calculator {
+        padding-top: 38px;
+        padding-bottom: 42px;
+      }
+
+      .calculator-panel {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 280px auto;
+        gap: 28px;
+        align-items: center;
+        overflow: hidden;
+        min-height: 260px;
+        padding: 34px;
+        border: 1px solid rgba(217, 255, 114, 0.2);
+        border-radius: 8px;
+        background:
+          linear-gradient(135deg, rgba(217, 255, 114, 0.16), rgba(34, 158, 217, 0.08) 42%, rgba(216, 45, 45, 0.08)),
+          rgba(19, 22, 17, 0.84);
+        box-shadow: 0 28px 90px rgba(0, 0, 0, 0.24);
+      }
+
+      .calculator-panel::after {
+        position: absolute;
+        inset: auto -8% -45% 36%;
+        height: 210px;
+        content: "";
+        background: rgba(217, 255, 114, 0.12);
+        filter: blur(54px);
+        transform: rotate(-6deg);
+        pointer-events: none;
+      }
+
+      .calculator-panel > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .calculator-panel h2 {
+        max-width: 820px;
+        font-size: 48px;
+        line-height: 1.04;
+      }
+
+      .calculator-panel p {
+        max-width: 760px;
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.55;
+      }
+
+      .calculator-bonus {
+        display: inline-flex;
+        min-height: 34px;
+        align-items: center;
+        margin-bottom: 18px;
+        padding: 0 11px;
+        border: 1px solid rgba(217, 255, 114, 0.22);
+        border-radius: 8px;
+        color: var(--lime);
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+        background: rgba(217, 255, 114, 0.08);
+      }
+
+      .bonus-visual {
+        position: relative;
+        width: 280px;
+        height: 220px;
+        perspective: 780px;
+      }
+
+      .bonus-plane {
+        position: absolute;
+        inset: 54px 18px 32px;
+        border: 1px solid rgba(217, 255, 114, 0.14);
+        border-radius: 8px;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+          rgba(5, 7, 6, 0.18);
+        background-size: 24px 24px;
+        transform: rotateX(64deg) rotateZ(-30deg);
+        transform-style: preserve-3d;
+      }
+
+      .bonus-card {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        display: grid;
+        align-content: center;
+        width: var(--w);
+        height: 76px;
+        padding: 14px;
+        border: 1px solid rgba(217, 255, 114, 0.2);
+        border-radius: 8px;
+        background:
+          linear-gradient(145deg, rgba(217, 255, 114, 0.18), rgba(34, 158, 217, 0.08)),
+          rgba(23, 27, 22, 0.88);
+        box-shadow:
+          0 28px 54px rgba(0, 0, 0, 0.28),
+          0 0 36px rgba(217, 255, 114, 0.08);
+        transform:
+          translate(-50%, -50%)
+          rotateX(58deg)
+          rotateZ(-28deg)
+          translate3d(var(--x), var(--y), var(--z));
+        transform-style: preserve-3d;
+        animation: stackFloat 6s ease-in-out infinite;
+      }
+
+      .bonus-card::after {
+        position: absolute;
+        inset: 100% 8px auto;
+        height: 18px;
+        border: 1px solid rgba(217, 255, 114, 0.13);
+        border-top: 0;
+        border-radius: 0 0 7px 7px;
+        background: rgba(9, 10, 8, 0.28);
+        content: "";
+        transform: skewX(-18deg);
+        transform-origin: top;
+      }
+
+      .bonus-card span {
+        color: rgba(247, 247, 239, 0.64);
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .bonus-card b {
+        margin-top: 6px;
+        color: var(--ink);
+        font-size: 22px;
+        line-height: 1;
+      }
+
+      .bonus-card:nth-child(2) {
+        --w: 154px;
+        --x: -44px;
+        --y: -40px;
+        --z: 38px;
+      }
+
+      .bonus-card:nth-child(3) {
+        --w: 178px;
+        --x: 22px;
+        --y: 4px;
+        --z: 22px;
+        animation-delay: -1.3s;
+      }
+
+      .bonus-card:nth-child(4) {
+        --w: 198px;
+        --x: -18px;
+        --y: 48px;
+        --z: 6px;
+        animation-delay: -2.2s;
+      }
+
+      .cases {
+        padding-top: 60px;
+        padding-bottom: 72px;
+        overflow: hidden;
+      }
+
+      .cases::before {
+        position: absolute;
+        inset: 12% -16% auto auto;
+        z-index: 0;
+        width: 720px;
+        height: 420px;
+        content: "";
+        background: url("./assets/signal-field.png") center / cover no-repeat;
+        border-radius: 8px;
+        filter: blur(2px);
+        opacity: 0.18;
+        transform: rotate(-5deg);
+        pointer-events: none;
+      }
+
+      .cases > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .case-stack {
+        display: grid;
+        gap: 12px;
+      }
+
+      .case-more {
+        display: flex;
+        justify-content: center;
+        margin-top: 28px;
+      }
+
+      .case-more .button {
+        min-width: 190px;
+      }
+
+      .case-extra {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 620ms ease,
+          transform 620ms ease;
+      }
+
+      .case-extra.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .case-card {
+        overflow: hidden;
+        padding: 22px;
+        border: 1px solid var(--line-strong);
+        border-radius: 8px;
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.024)),
+          rgba(18, 20, 16, 0.76);
+        box-shadow: 0 28px 90px rgba(0, 0, 0, 0.24);
+        backdrop-filter: blur(22px);
+      }
+
+      .case-top {
+        display: flex;
+        gap: 16px;
+        align-items: start;
+        justify-content: space-between;
+      }
+
+      .case-meta {
+        display: inline-flex;
+        min-height: 42px;
+        align-items: center;
+        padding: 0 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: rgba(247, 247, 239, 0.76);
+        font-size: 15px;
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.045);
+      }
+
+      .case-metrics {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: end;
+        max-width: 520px;
+      }
+
+      .case-metrics span {
+        display: inline-flex;
+        min-height: 42px;
+        align-items: center;
+        padding: 0 14px;
+        border: 1px solid rgba(217, 255, 114, 0.18);
+        border-radius: 8px;
+        color: var(--lime);
+        font-weight: 800;
+        background: rgba(217, 255, 114, 0.08);
+      }
+
+      .case-title {
+        max-width: 760px;
+        margin-top: 18px;
+        font-size: 32px;
+        line-height: 1.08;
+      }
+
+      .case-desc {
+        max-width: 760px;
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .case-body {
+        display: grid;
+        grid-template-columns: 0.82fr 1.18fr;
+        gap: 18px;
+        align-items: start;
+        margin-top: 20px;
+      }
+
+      .case-facts {
+        display: grid;
+        gap: 18px;
+      }
+
+      .case-fact {
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+      }
+
+      .case-fact h4 {
+        font-size: 23px;
+      }
+
+      .case-fact ul {
+        display: grid;
+        gap: 12px;
+        margin: 16px 0 0;
+        padding-left: 22px;
+        color: rgba(247, 247, 239, 0.72);
+        font-size: 17px;
+        line-height: 1.5;
+      }
+
+      .case-media {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .photo-slot {
+        position: relative;
+        display: grid;
+        min-height: 164px;
+        place-items: center;
+        border: 1px dashed rgba(247, 247, 239, 0.22);
+        border-radius: 8px;
+        color: rgba(247, 247, 239, 0.72);
+        font-weight: 800;
+        background:
+          linear-gradient(135deg, rgba(217, 255, 114, 0.13), rgba(216, 45, 45, 0.08)),
+          rgba(255, 255, 255, 0.045);
+      }
+
+      .photo-slot::after {
+        position: absolute;
+        inset: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 6px;
+        content: "";
+      }
+
+      .case-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 24px;
+      }
+
+      .case-tags span {
+        display: inline-flex;
+        min-height: 38px;
+        align-items: center;
+        padding: 0 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: rgba(247, 247, 239, 0.74);
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.045);
+      }
+
+      .process {
+        padding-bottom: 72px;
+        background:
+          linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.025) 22%, transparent),
+          radial-gradient(760px 420px at 12% 20%, rgba(217, 255, 114, 0.08), transparent 70%);
+      }
+
+      .process-board {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .step {
+        min-height: 330px;
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.052);
+        backdrop-filter: blur(20px);
+      }
+
+      .step-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border: 1px solid rgba(217, 255, 114, 0.22);
+        border-radius: 8px;
+        color: var(--lime);
+        font-weight: 900;
+        background: rgba(217, 255, 114, 0.08);
+      }
+
+      .step h3 {
+        margin-top: 72px;
+        font-size: 26px;
+        line-height: 1.16;
+      }
+
+      .step p {
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.55;
+      }
+
+      .lead-form-section {
+        padding: 72px 0 58px;
+      }
+
+      .lead-box {
+        position: relative;
+        overflow: hidden;
+        padding: 38px;
+        border: 1px solid rgba(217, 255, 114, 0.22);
+        border-radius: 8px;
+        background:
+          linear-gradient(145deg, rgba(217, 255, 114, 0.14), rgba(216, 45, 45, 0.08), rgba(143, 209, 199, 0.045)),
+          rgba(15, 17, 13, 0.78);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(24px);
+      }
+
+      .lead-box::before {
+        position: absolute;
+        top: -24%;
+        right: -10%;
+        width: 620px;
+        height: 460px;
+        content: "";
+        background: url("./assets/signal-field.png") center / cover no-repeat;
+        opacity: 0.22;
+        transform: rotate(7deg);
+      }
+
+      .lead-content {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 48px;
+        align-items: start;
+      }
+
+      .lead-content h2 {
+        font-size: 64px;
+      }
+
+      .lead-content p {
+        max-width: 680px;
+        margin-top: 22px;
+        color: var(--muted);
+        font-size: 19px;
+        line-height: 1.56;
+      }
+
+      .contact-links {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 28px;
+      }
+
+      .lead-form {
+        display: grid;
+        gap: 12px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .field {
+        display: grid;
+        gap: 8px;
+      }
+
+      .hp-field {
+        position: absolute;
+        left: -9999px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+      }
+
+      .field label {
+        color: rgba(247, 247, 239, 0.74);
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .field input,
+      .field textarea {
+        width: 100%;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 8px;
+        color: var(--ink);
+        background: rgba(0, 0, 0, 0.22);
+        outline: none;
+        transition:
+          border-color 180ms ease,
+          background 180ms ease;
+      }
+
+      .field input {
+        height: 54px;
+        padding: 0 14px;
+      }
+
+      .field textarea {
+        min-height: 132px;
+        resize: vertical;
+        padding: 14px;
+      }
+
+      .field input:focus,
+      .field textarea:focus {
+        border-color: rgba(217, 255, 114, 0.44);
+        background: rgba(0, 0, 0, 0.3);
+      }
+
+      .form-status {
+        min-height: 22px;
+        color: var(--lime);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      footer {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 28px;
+        align-items: start;
+        padding: 34px 0 48px;
+        border-top: 1px solid var(--line);
+        color: rgba(247, 247, 239, 0.48);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .footer-legal {
+        display: grid;
+        gap: 2px;
+        justify-self: end;
+        max-width: 620px;
+        text-align: right;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 700ms ease,
+          transform 700ms ease;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(217, 255, 114, 0.64); }
+        70% { box-shadow: 0 0 0 13px rgba(217, 255, 114, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(217, 255, 114, 0); }
+      }
+
+      @keyframes cockpitEnter {
+        from {
+          opacity: 0;
+          transform: translateY(28px) rotateY(-10deg) rotateX(6deg) scale(0.97);
+        }
+        to {
+          opacity: 1;
+          transform: rotateY(-6deg) rotateX(3deg);
+        }
+      }
+
+      @keyframes scan {
+        0%, 14% { transform: translateX(-100%); opacity: 0; }
+        24%, 74% { opacity: 1; }
+        88%, 100% { transform: translateX(100%); opacity: 0; }
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translate3d(0, 0, 0); }
+        50% { transform: translate3d(0, -16px, 0); }
+      }
+
+      @keyframes stackFloat {
+        0%, 100% {
+          margin-top: 0;
+          filter: brightness(1);
+        }
+        50% {
+          margin-top: -8px;
+          filter: brightness(1.08);
+        }
+      }
+
+      @keyframes ticker {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+      }
+
+      @media (max-width: 1280px) {
+        body {
+          min-width: 1160px;
+        }
+
+        h1 {
+          font-size: 76px;
+        }
+
+        .growth-board {
+          width: 620px;
+        }
+
+        .float-card.left {
+          left: 70px;
+        }
+
+        .stat-value {
+          font-size: 58px;
+        }
+
+        .stat-card p {
+          font-size: 26px;
+        }
+      }
+
+      @media (max-width: 900px) {
+        body {
+          min-width: 0;
+          background:
+            linear-gradient(180deg, rgba(9, 10, 8, 0.1), #090a08 46%),
+            url("./assets/signal-field.png") center top / 210% auto no-repeat,
+            var(--bg);
+        }
+
+        .shell {
+          width: min(100% - 28px, 720px);
+        }
+
+        .topbar {
+          top: 10px;
+          grid-template-columns: minmax(0, 1fr) auto;
+          gap: 10px;
+          min-height: 0;
+          margin-top: 10px;
+          padding: 10px;
+        }
+
+        .brand {
+          min-width: 0;
+          gap: 9px;
+          font-size: 11px;
+        }
+
+        .brand span:last-child {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .brand-mark {
+          width: 28px;
+          height: 28px;
+        }
+
+        .nav {
+          grid-column: 1 / -1;
+          justify-content: start;
+          width: 100%;
+          overflow-x: auto;
+          scrollbar-width: none;
+        }
+
+        .nav::-webkit-scrollbar {
+          display: none;
+        }
+
+        .nav a {
+          flex: 0 0 auto;
+          padding: 9px 11px;
+          font-size: 12px;
+        }
+
+        .header-actions {
+          gap: 8px;
+        }
+
+        .lang-toggle,
+        .tg-icon {
+          width: 42px;
+          height: 38px;
+          min-height: 38px;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 34px;
+          min-height: auto;
+          padding: 42px 0 30px;
+        }
+
+        .eyebrow {
+          margin-bottom: 18px;
+          font-size: 12px;
+        }
+
+        h1 {
+          max-width: 100%;
+          font-size: 58px;
+          line-height: 0.98;
+        }
+
+        .lead {
+          max-width: 100%;
+          margin-top: 22px;
+          font-size: 18px;
+          line-height: 1.5;
+        }
+
+        .hero-actions {
+          flex-direction: column;
+          align-items: stretch;
+          margin-top: 26px;
+        }
+
+        .button {
+          width: 100%;
+          min-width: 0;
+          height: 54px;
+        }
+
+        .hero-mini {
+          grid-template-columns: 1fr;
+          margin-top: 18px;
+        }
+
+        .mini-item {
+          min-height: 0;
+        }
+
+        .stage-wrap {
+          min-height: 0;
+          perspective: none;
+        }
+
+        .growth-board {
+          position: relative;
+          top: auto;
+          right: auto;
+          width: 100%;
+          min-height: 0;
+          transform: none;
+        }
+
+        .board-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .board-panel.main {
+          grid-row: auto;
+          min-height: 306px;
+        }
+
+        .metric-panel,
+        .task-panel {
+          min-height: 142px;
+        }
+
+        .float-card {
+          display: none;
+        }
+
+        .ticker {
+          margin-top: 10px;
+        }
+
+        .ticker span {
+          height: 56px;
+          padding: 0 22px;
+          font-size: 12px;
+        }
+
+        section {
+          padding: 60px 0;
+        }
+
+        .section-head {
+          grid-template-columns: 1fr;
+          gap: 18px;
+          margin-bottom: 24px;
+        }
+
+        h2 {
+          max-width: 100%;
+          font-size: 42px;
+          line-height: 1.04;
+        }
+
+        .section-head p {
+          font-size: 17px;
+          line-height: 1.5;
+        }
+
+        .section-head-copy .button {
+          width: 100%;
+          margin-top: 18px;
+        }
+
+        .stats {
+          padding-top: 58px;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+          gap: 14px;
+        }
+
+        .stat-card {
+          min-height: 176px;
+          padding: 26px 18px;
+        }
+
+        .stat-value {
+          font-size: 52px;
+        }
+
+        .stat-card p {
+          font-size: 23px;
+        }
+
+        .stat-line {
+          margin: 18px auto 16px;
+        }
+
+        #offer {
+          padding: 58px 0;
+        }
+
+        .offer-grid {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+
+        .offer-card {
+          min-height: 0;
+          padding: 20px;
+        }
+
+        .offer-card h3 {
+          font-size: 26px;
+        }
+
+        .calculator {
+          padding-top: 28px;
+          padding-bottom: 36px;
+        }
+
+        .calculator-panel {
+          grid-template-columns: 1fr;
+          gap: 18px;
+          min-height: 0;
+          padding: 22px;
+        }
+
+        .calculator-panel h2 {
+          font-size: 36px;
+        }
+
+        .calculator-panel p {
+          font-size: 16px;
+        }
+
+        .bonus-visual {
+          justify-self: center;
+          width: 260px;
+          height: 188px;
+          margin: -2px 0;
+        }
+
+        .bonus-plane {
+          inset: 48px 18px 26px;
+        }
+
+        .bonus-card {
+          height: 68px;
+          padding: 12px;
+        }
+
+        .bonus-card b {
+          font-size: 20px;
+        }
+
+        .cases {
+          padding-top: 54px;
+          padding-bottom: 54px;
+        }
+
+        .cases::before {
+          inset: 8% -44% auto auto;
+          width: 520px;
+          height: 340px;
+        }
+
+        .case-card {
+          padding: 17px;
+        }
+
+        .case-top {
+          display: grid;
+          gap: 12px;
+        }
+
+        .case-metrics {
+          justify-content: start;
+          max-width: 100%;
+        }
+
+        .case-metrics span {
+          min-height: 36px;
+          padding: 0 10px;
+          font-size: 13px;
+        }
+
+        .case-title {
+          margin-top: 14px;
+          font-size: 27px;
+        }
+
+        .case-desc {
+          font-size: 15px;
+        }
+
+        .case-body {
+          grid-template-columns: 1fr;
+          gap: 15px;
+          margin-top: 14px;
+        }
+
+        .case-media {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 7px;
+        }
+
+        .photo-slot {
+          min-height: 112px;
+          font-size: 13px;
+        }
+
+        .process {
+          padding-bottom: 54px;
+        }
+
+        .process-board {
+          grid-template-columns: 1fr;
+        }
+
+        .step {
+          min-height: 0;
+        }
+
+        .lead-form-section {
+          padding: 54px 0 44px;
+        }
+
+        .lead-box {
+          padding: 22px;
+        }
+
+        .lead-content {
+          grid-template-columns: 1fr;
+          gap: 26px;
+        }
+
+        .lead-content h2 {
+          font-size: 42px;
+        }
+
+        .lead-content p {
+          margin-top: 16px;
+          font-size: 17px;
+        }
+
+        .contact-links {
+          margin-top: 20px;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        footer {
+          grid-template-columns: 1fr;
+          gap: 18px;
+          padding-bottom: 34px;
+        }
+
+        .footer-legal {
+          justify-self: start;
+          text-align: left;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .shell {
+          width: calc(100% - 24px);
+        }
+
+        .brand span:last-child {
+          max-width: 168px;
+        }
+
+        h1 {
+          font-size: 46px;
+        }
+
+        h2 {
+          font-size: 34px;
+        }
+
+        .hero {
+          padding-top: 34px;
+        }
+
+        .panel-title {
+          font-size: 26px;
+        }
+
+        .signal-map {
+          height: 140px;
+        }
+
+        .stat-value {
+          font-size: 46px;
+        }
+
+        .stat-card p {
+          font-size: 20px;
+        }
+
+        .mini-channel-row,
+        .card-tags {
+          gap: 7px;
+        }
+
+        .calculator-panel h2,
+        .lead-content h2 {
+          font-size: 34px;
+        }
+
+        .bonus-visual {
+          width: 232px;
+          transform: scale(0.92);
+          transform-origin: center;
+        }
+
+        .case-media {
+          grid-template-columns: 1fr;
+        }
+
+        .photo-slot {
+          min-height: 136px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 1ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 1ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar shell">
+        <a href="#top" class="brand" aria-label="На первый экран">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span data-ru="Маркетолог на аутсорсе" data-en="Outsourced marketer">Маркетолог на аутсорсе</span>
+        </a>
+
+        <nav class="nav" aria-label="Разделы сайта">
+          <a href="#stats" data-ru="Цифры" data-en="Numbers">Цифры</a>
+          <a href="#offer" data-ru="Каналы" data-en="Channels">Каналы</a>
+          <a href="#cases" data-ru="Кейсы" data-en="Cases">Кейсы</a>
+          <a href="#lead-form" data-ru="Заявка" data-en="Lead form">Заявка</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="lang-toggle" type="button" aria-label="Switch language" data-lang-toggle>EN</button>
+          <a class="tg-icon" href="https://t.me/isrmtnkvmarketing" target="_blank" rel="noreferrer" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M21.8 4.6 18.5 20c-.2 1-.8 1.2-1.6.8l-4.5-3.3-2.2 2.1c-.2.2-.4.4-.9.4l.3-4.7 8.6-7.8c.4-.3-.1-.5-.6-.2L7 14 2.4 12.6c-1-.3-1-1 .2-1.4L20.5 4.3c.8-.3 1.5.2 1.3.3Z"/>
+            </svg>
+          </a>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero shell" aria-label="Первый экран">
+          <div class="hero-copy">
+            <div class="eyebrow reveal">
+              <span class="pulse" aria-hidden="true"></span>
+              <span data-ru="Беру маркетинг на аутсорс: от стратегии до заявок" data-en="Outsourced marketing: from strategy to leads">Беру маркетинг на аутсорс: от стратегии до заявок</span>
+            </div>
+            <h1 class="hero-title reveal">
+              <span data-ru="Маркетолог" data-en="Outsourced">Маркетолог</span>
+              <span class="accent" data-ru="на аутсорсе" data-en="marketer">на аутсорсе</span>
+            </h1>
+            <p class="lead reveal" data-ru="Беру маркетинг под управление: усиливаю офферы, запускаю каналы и довожу заявки до понятной экономики." data-en="I take marketing under control: strengthen offers, launch channels and turn leads into clear economics.">
+              Беру маркетинг под управление: усиливаю офферы, запускаю каналы и довожу заявки до понятной экономики.
+            </p>
+            <div class="hero-actions reveal">
+              <a class="button primary magnetic" href="#lead-form" data-ru="Обсудить проект ↗" data-en="Discuss a project ↗">Обсудить проект ↗</a>
+              <a class="button telegram magnetic" href="https://t.me/isrmtnkv" target="_blank" rel="noreferrer" data-ru="Связаться со мной ↗" data-en="Contact me ↗">Связаться со мной ↗</a>
+              <a class="button magnetic" href="#cases" data-ru="Смотреть кейсы" data-en="View cases">Смотреть кейсы</a>
+            </div>
+            <div class="hero-mini reveal">
+              <div class="mini-item">
+                <b data-ru="Трафик" data-en="Traffic">Трафик</b>
+                <span data-ru="Яндекс, VK, Telegram, Avito и другие каналы под экономику проекта." data-en="Yandex, VK, Telegram, Avito and other channels tied to project economics.">Яндекс, VK, Telegram, Avito и другие каналы под экономику проекта.</span>
+              </div>
+              <div class="mini-item">
+                <b data-ru="Воронка" data-en="Funnel">Воронка</b>
+                <span data-ru="Оффер, лендинг, CRM-логика, качество лида и связка с продажами." data-en="Offer, landing page, CRM logic, lead quality and sales connection.">Оффер, лендинг, CRM-логика, качество лида и связка с продажами.</span>
+              </div>
+              <div class="mini-item">
+                <b data-ru="Аналитика" data-en="Analytics">Аналитика</b>
+                <span data-ru="Метрики до уровня CAC/LTV, HADI-циклы и понятные решения." data-en="Metrics down to CAC/LTV, HADI cycles and clear decisions.">Метрики до уровня CAC/LTV, HADI-циклы и понятные решения.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stage-wrap" aria-hidden="true">
+            <div class="float-card left">
+              <span data-ru="Фокус недели" data-en="Weekly focus">Фокус недели</span>
+              <b data-ru="что масштабировать" data-en="what to scale">что масштабировать</b>
+              <div class="chip-row">
+                <span class="chip">CPL</span>
+                <span class="chip">CAC</span>
+                <span class="chip">LTV</span>
+              </div>
+            </div>
+            <div class="growth-board">
+              <div class="board-top">
+                <div class="window-dots"><span></span><span></span><span></span></div>
+                <div class="status-pill"><span class="pulse"></span><span data-ru="система роста" data-en="growth system">система роста</span></div>
+              </div>
+              <div class="board-grid">
+                <article class="board-panel main">
+                  <span class="panel-label" data-ru="проект" data-en="project">проект</span>
+                  <h3 class="panel-title" data-ru="Гипотеза → запуск → вывод" data-en="Hypothesis → launch → insight">Гипотеза → запуск → вывод</h3>
+                  <div class="signal-map">
+                    <span></span><span></span><span></span><i class="scan-line"></i>
+                  </div>
+                  <div class="channel-list">
+                    <div class="channel"><small data-ru="качество лида" data-en="lead quality">качество лида</small><b data-ru="видно" data-en="clear">видно</b></div>
+                    <div class="channel"><small data-ru="конверсия" data-en="conversion">конверсия</small><b data-ru="тест" data-en="test">тест</b></div>
+                    <div class="channel"><small data-ru="следующий ход" data-en="next move">следующий ход</small><b data-ru="рост" data-en="scale">рост</b></div>
+                  </div>
+                </article>
+                <article class="board-panel metric-panel">
+                  <span class="panel-label" data-ru="скорость" data-en="speed">скорость</span>
+                  <strong>7</strong>
+                  <p data-ru="дней, чтобы собрать аудит и карту быстрых улучшений." data-en="days to prepare an audit and a quick improvement map.">дней, чтобы собрать аудит и карту быстрых улучшений.</p>
+                </article>
+                <article class="board-panel task-panel">
+                  <span class="panel-label" data-ru="сегодня" data-en="today">сегодня</span>
+                  <div class="task done"><i></i><span data-ru="оффер" data-en="offer">оффер</span></div>
+                  <div class="task done"><i></i><span data-ru="канал" data-en="channel">канал</span></div>
+                  <div class="task"><i></i><span data-ru="тест" data-en="test">тест</span></div>
+                  <div class="task"><i></i><span data-ru="вывод" data-en="insight">вывод</span></div>
+                </article>
+              </div>
+            </div>
+            <div class="float-card right">
+              <span data-ru="Режим" data-en="Mode">Режим</span>
+              <b data-ru="маркетинг под результат" data-en="marketing tied to results">маркетинг под результат</b>
+              <div class="chip-row">
+                <span class="chip" data-ru="аудит" data-en="audit">аудит</span>
+                <span class="chip" data-ru="запуск" data-en="launch">запуск</span>
+                <span class="chip" data-ru="ведение" data-en="retainer">ведение</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="ticker" aria-hidden="true">
+          <div class="ticker-track">
+            <span data-ru="маркетинг на аутсорсе" data-en="outsourced marketing">маркетинг на аутсорсе</span>
+            <span data-ru="лидогенерация с экономикой" data-en="lead generation with economics">лидогенерация с экономикой</span>
+            <span data-ru="Яндекс, VK, Telegram, Avito" data-en="Yandex, VK, Telegram, Avito">Яндекс, VK, Telegram, Avito</span>
+            <span data-ru="офферы и лендинги" data-en="offers and landing pages">офферы и лендинги</span>
+            <span data-ru="аналитика и HADI-циклы" data-en="analytics and HADI cycles">аналитика и HADI-циклы</span>
+            <span data-ru="маркетинг на аутсорсе" data-en="outsourced marketing">маркетинг на аутсорсе</span>
+            <span data-ru="лидогенерация с экономикой" data-en="lead generation with economics">лидогенерация с экономикой</span>
+            <span data-ru="Яндекс, VK, Telegram, Avito" data-en="Yandex, VK, Telegram, Avito">Яндекс, VK, Telegram, Avito</span>
+            <span data-ru="офферы и лендинги" data-en="offers and landing pages">офферы и лендинги</span>
+            <span data-ru="аналитика и HADI-циклы" data-en="analytics and HADI cycles">аналитика и HADI-циклы</span>
+          </div>
+        </div>
+
+        <section id="stats" class="stats shell">
+          <div class="section-head reveal">
+            <div>
+              <span class="section-kicker" data-ru="Цифры" data-en="Numbers">Цифры</span>
+              <h2 data-ru="Масштаб, который уже был в работе." data-en="The scale already handled in practice.">Масштаб, который уже был в работе.</h2>
+            </div>
+            <p data-ru="Короткий срез опыта: рекламные бюджеты, заявки, ниши и проекты, где результат можно проверить в цифрах." data-en="A quick snapshot: ad budgets, leads, niches and projects where the result can be checked in numbers.">
+              Короткий срез опыта: рекламные бюджеты, заявки, ниши и проекты, где результат можно проверить в цифрах.
+            </p>
+          </div>
+          <div class="stats-grid">
+            <article class="stat-card reveal">
+              <div class="stat-value" data-stat data-target="5" data-suffix-ru=" млн ₽" data-suffix-en="M ₽">0</div>
+              <div class="stat-line"></div>
+              <p data-ru="рекламного бюджета в месяц" data-en="monthly ad budget managed">рекламного бюджета в месяц</p>
+            </article>
+            <article class="stat-card reveal">
+              <div class="stat-value" data-stat data-target="150" data-suffix-ru=" тыс." data-suffix-en="K">0</div>
+              <div class="stat-line"></div>
+              <p data-ru="целевых лидов приведено" data-en="qualified leads generated">целевых лидов приведено</p>
+            </article>
+            <article class="stat-card reveal">
+              <div class="stat-value" data-stat data-target="4">0</div>
+              <div class="stat-line"></div>
+              <p data-ru="экспертные ниши в работе" data-en="expert niches handled">экспертные ниши в работе</p>
+            </article>
+            <article class="stat-card reveal">
+              <div class="stat-value" data-stat data-target="75" data-suffix-ru="+" data-suffix-en="+">0</div>
+              <div class="stat-line"></div>
+              <p data-ru="проектов реализовано" data-en="projects completed">проектов реализовано</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="offer" class="offer-section">
+          <div class="shell">
+            <div class="section-head reveal">
+              <div>
+                <span class="section-kicker" data-ru="Каналы" data-en="Channels">Каналы</span>
+                <h2 data-ru="Трафик, офферы, аналитика." data-en="Traffic, offers, analytics.">Трафик, офферы, аналитика.</h2>
+              </div>
+              <div class="section-head-copy">
+                <p data-ru="Собираю каналы в одну управляемую систему: от первого клика до заявки, сделки и понятного отчёта." data-en="I turn channels into one managed system: from the first click to a lead, a deal and a clear report.">
+                  Собираю каналы в одну управляемую систему: от первого клика до заявки, сделки и понятного отчёта.
+                </p>
+                <a class="button primary magnetic" href="#lead-form" data-ru="Хочу результат!" data-en="I want results!">Хочу результат!</a>
+              </div>
+            </div>
+            <div class="offer-grid">
+            <article class="offer-card featured reveal">
+              <h3 data-ru="Руководство маркетингом на аутсорсе" data-en="Outsourced marketing leadership">Руководство маркетингом на аутсорсе</h3>
+              <p data-ru="План, приоритеты, контроль подрядчиков, медиамикс, отчётность и связь с продажами. Один человек отвечает за целую систему." data-en="Plan, priorities, contractor control, media mix, reporting and sales connection. One person owns the whole system.">
+                План, приоритеты, контроль подрядчиков, медиамикс, отчётность и связь с продажами. Один человек отвечает за целую систему.
+              </p>
+              <div class="card-tags">
+                <span data-ru="стратегия" data-en="strategy">стратегия</span>
+                <span data-ru="управление" data-en="management">управление</span>
+                <span data-ru="KPI" data-en="KPI">KPI</span>
+              </div>
+            </article>
+            <article class="offer-card reveal">
+              <h3 data-ru="Трафик и лидогенерация" data-en="Traffic and lead generation">Трафик и лидогенерация</h3>
+              <p data-ru="Запуск и масштабирование рекламных каналов с привязкой к цене лида, качеству заявки и окупаемости." data-en="Launching and scaling ad channels tied to lead cost, lead quality and payback.">
+                Запуск и масштабирование рекламных каналов с привязкой к цене лида, качеству заявки и окупаемости.
+              </p>
+              <div class="mini-channel-row" aria-label="Каналы трафика">
+                <span class="mini-channel">
+                  <span class="channel-logo yandex">Я</span>
+                  Яндекс
+                </span>
+                <span class="mini-channel">
+                  <span class="channel-logo vk">
+                    <svg viewBox="0 0 48 48" width="16" height="16" aria-hidden="true">
+                      <path fill="#fff" d="M25.5 33.5c-10.4 0-16.3-7.1-16.6-18.9h5.2c.2 8.7 4 12.4 7 13.2V14.6H26v7.5c3-.3 6.1-3.7 7.2-7.5h4.9c-.8 4.7-4.2 8.1-6.6 9.5 2.4 1.1 6.2 4.1 7.7 9.4h-5.4c-1.2-3.7-4-6.5-7.8-6.9v6.9h-.5Z"/>
+                    </svg>
+                  </span>
+                  VK
+                </span>
+                <span class="mini-channel">
+                  <span class="channel-logo tg">
+                    <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+                      <path fill="#fff" d="M21.8 4.6 18.5 20c-.2 1-.8 1.2-1.6.8l-4.5-3.3-2.2 2.1c-.2.2-.4.4-.9.4l.3-4.7 8.6-7.8c.4-.3-.1-.5-.6-.2L7 14 2.4 12.6c-1-.3-1-1 .2-1.4L20.5 4.3c.8-.3 1.5.2 1.3.3Z"/>
+                    </svg>
+                  </span>
+                  Telegram
+                </span>
+                <span class="mini-channel">
+                  <span class="channel-logo avito"><i></i><i></i><i></i><i></i></span>
+                  Avito
+                </span>
+              </div>
+            </article>
+            <article class="offer-card reveal">
+              <h3 data-ru="Офферы, лендинги и аналитика" data-en="Offers, landing pages and analytics">Офферы, лендинги и аналитика</h3>
+              <p data-ru="Пересборка смысла, страниц и метрик так, чтобы трафик превращался в заявки, а заявки — в управляемые продажи." data-en="Reworking messaging, pages and metrics so traffic becomes leads and leads become manageable sales.">
+                Пересборка смысла, страниц и метрик так, чтобы трафик превращался в заявки, а заявки — в управляемые продажи.
+              </p>
+              <div class="card-tags">
+                <span data-ru="оффер" data-en="offer">оффер</span>
+                <span data-ru="лендинг" data-en="landing">лендинг</span>
+                <span data-ru="аналитика" data-en="analytics">аналитика</span>
+              </div>
+            </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="calculator" class="calculator shell">
+          <div class="calculator-panel reveal">
+            <div>
+              <span class="calculator-bonus" data-ru="Бесплатный бонус" data-en="Free bonus">Бесплатный бонус</span>
+              <h2 data-ru="Посчитайте стоимость реализации вашего проекта" data-en="Estimate the cost of implementing your project">Посчитайте стоимость реализации вашего проекта</h2>
+              <p data-ru="И получите экспресс-аудит рекламной воронки бесплатно: покажу, где быстрее снизить CPL и увеличить поток заявок." data-en="And get a free express audit of your ad funnel: I will show where to reduce CPL faster and increase lead flow.">
+                И получите экспресс-аудит рекламной воронки бесплатно: покажу, где быстрее снизить CPL и увеличить поток заявок.
+              </p>
+            </div>
+            <div class="bonus-visual" aria-hidden="true">
+              <div class="bonus-plane"></div>
+              <div class="bonus-card"><span data-ru="Аудит" data-en="Audit">Аудит</span><b data-ru="7 дней" data-en="7 days">7 дней</b></div>
+              <div class="bonus-card"><span>CPL</span><b>-15%</b></div>
+              <div class="bonus-card"><span data-ru="Лиды" data-en="Leads">Лиды</span><b data-ru="рост" data-en="growth">рост</b></div>
+            </div>
+            <a class="button primary magnetic" href="https://t.me/dainaai_bot" target="_blank" rel="noreferrer" data-ru="Рассчитать в боте ↗" data-en="Calculate in the bot ↗">Рассчитать в боте ↗</a>
+          </div>
+        </section>
+
+        <section id="cases" class="cases shell">
+          <div class="section-head reveal">
+            <div>
+              <span class="section-kicker" data-ru="Кейсы" data-en="Cases">Кейсы</span>
+              <h2 data-ru="Коротко по результатам." data-en="Results, briefly.">Коротко по результатам.</h2>
+            </div>
+            <p data-ru="Коротко о проектах: ниша, ключевые метрики и подтверждающие материалы, которые помогают оценить результат до созвона." data-en="A short view of projects: niche, key metrics and proof materials that help evaluate the result before a call.">
+              Коротко о проектах: ниша, ключевые метрики и подтверждающие материалы, которые помогают оценить результат до созвона.
+            </p>
+          </div>
+
+          <div class="case-stack">
+            <article class="case-card reveal">
+              <div class="case-top">
+                <span class="case-meta">Citadello</span>
+                <div class="case-metrics">
+                  <span data-ru="400–600 лидов/мес" data-en="400–600 leads/mo">400–600 лидов/мес</span>
+                  <span>CPL -55%</span>
+                  <span data-ru="54 HADI/год" data-en="54 HADI/year">54 HADI/год</span>
+                </div>
+              </div>
+              <div class="case-body">
+                <div>
+                  <h3 class="case-title" data-ru="SaaS для интернет-магазинов" data-en="SaaS for online stores">SaaS для интернет-магазинов</h3>
+                  <p class="case-desc" data-ru="Пересобрал позиционирование, офферы и лидогенерацию. Реклама стала прогнозируемой и связанной с качеством лида." data-en="Rebuilt positioning, offers and lead generation. Advertising became predictable and tied to lead quality.">
+                    Пересобрал позиционирование, офферы и лидогенерацию. Реклама стала прогнозируемой и связанной с качеством лида.
+                  </p>
+                </div>
+                <div class="case-media">
+                  <div class="photo-slot" data-ru="Скрин 1" data-en="Screenshot 1">Скрин 1</div>
+                  <div class="photo-slot" data-ru="Скрин 2" data-en="Screenshot 2">Скрин 2</div>
+                  <div class="photo-slot" data-ru="Скрин 3" data-en="Screenshot 3">Скрин 3</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="case-card reveal">
+              <div class="case-top">
+                <span class="case-meta">Axioom</span>
+                <div class="case-metrics">
+                  <span data-ru="+250% заявок" data-en="+250% requests">+250% заявок</span>
+                  <span data-ru="8 млн ₽ / мес" data-en="8M ₽ / mo">8 млн ₽ / мес</span>
+                  <span data-ru="CPL x1.5 лучше" data-en="CPL 1.5x better">CPL x1.5 лучше</span>
+                </div>
+              </div>
+              <div class="case-body">
+                <div>
+                  <h3 class="case-title" data-ru="Маркетинговое агентство SEO" data-en="SEO marketing agency">Маркетинговое агентство SEO</h3>
+                  <p class="case-desc" data-ru="Переработал офферы, лендинги и привлечение из нескольких каналов. Поток заявок вырос, CPL снизился в конкурентной нише." data-en="Reworked offers, landing pages and multi-channel acquisition. Requests grew and CPL dropped in a competitive niche.">
+                    Переработал офферы, лендинги и привлечение из нескольких каналов. Поток заявок вырос, CPL снизился в конкурентной нише.
+                  </p>
+                </div>
+                <div class="case-media">
+                  <div class="photo-slot" data-ru="Скрин 1" data-en="Screenshot 1">Скрин 1</div>
+                  <div class="photo-slot" data-ru="Скрин 2" data-en="Screenshot 2">Скрин 2</div>
+                  <div class="photo-slot" data-ru="Скрин 3" data-en="Screenshot 3">Скрин 3</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="case-card reveal">
+              <div class="case-top">
+                <span class="case-meta" data-ru="Мастера Ремонта" data-en="Masters of Renovation">Мастера Ремонта</span>
+                <div class="case-metrics">
+                  <span data-ru="3–5 млн ₽ бюджет" data-en="3–5M ₽ budget">3–5 млн ₽ бюджет</span>
+                  <span data-ru="6 500 ₽ замер" data-en="6,500 ₽ survey">6 500 ₽ замер</span>
+                  <span data-ru="540–560 тыс. ₽ чек" data-en="540–560K ₽ avg check">540–560 тыс. ₽ чек</span>
+                </div>
+              </div>
+              <div class="case-body">
+                <div>
+                  <h3 class="case-title" data-ru="Дизайнерский ремонт квартир" data-en="Designer apartment renovation">Дизайнерский ремонт квартир</h3>
+                  <p class="case-desc" data-ru="Держал стабильный поток заявок при крупном бюджете и контролировал экономику канала в связке с продажами." data-en="Maintained a stable lead flow on a large budget and controlled channel economics together with sales.">
+                    Держал стабильный поток заявок при крупном бюджете и контролировал экономику канала в связке с продажами.
+                  </p>
+                </div>
+                <div class="case-media">
+                  <div class="photo-slot" data-ru="Скрин 1" data-en="Screenshot 1">Скрин 1</div>
+                  <div class="photo-slot" data-ru="Скрин 2" data-en="Screenshot 2">Скрин 2</div>
+                  <div class="photo-slot" data-ru="Скрин 3" data-en="Screenshot 3">Скрин 3</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="case-card case-extra" data-extra-case hidden>
+              <div class="case-top">
+                <span class="case-meta">Citadello</span>
+                <div class="case-metrics">
+                  <span data-ru="400–600 лидов/мес" data-en="400–600 leads/mo">400–600 лидов/мес</span>
+                  <span>CPL -55%</span>
+                  <span data-ru="54 HADI/год" data-en="54 HADI/year">54 HADI/год</span>
+                </div>
+              </div>
+              <div class="case-body">
+                <div>
+                  <h3 class="case-title" data-ru="SaaS для интернет-магазинов" data-en="SaaS for online stores">SaaS для интернет-магазинов</h3>
+                  <p class="case-desc" data-ru="Пересобрал позиционирование, офферы и лидогенерацию. Реклама стала прогнозируемой и связанной с качеством лида." data-en="Rebuilt positioning, offers and lead generation. Advertising became predictable and tied to lead quality.">
+                    Пересобрал позиционирование, офферы и лидогенерацию. Реклама стала прогнозируемой и связанной с качеством лида.
+                  </p>
+                </div>
+                <div class="case-media">
+                  <div class="photo-slot" data-ru="Скрин 1" data-en="Screenshot 1">Скрин 1</div>
+                  <div class="photo-slot" data-ru="Скрин 2" data-en="Screenshot 2">Скрин 2</div>
+                  <div class="photo-slot" data-ru="Скрин 3" data-en="Screenshot 3">Скрин 3</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="case-card case-extra" data-extra-case hidden>
+              <div class="case-top">
+                <span class="case-meta">Axioom</span>
+                <div class="case-metrics">
+                  <span data-ru="+250% заявок" data-en="+250% requests">+250% заявок</span>
+                  <span data-ru="8 млн ₽ / мес" data-en="8M ₽ / mo">8 млн ₽ / мес</span>
+                  <span data-ru="CPL x1.5 лучше" data-en="CPL 1.5x better">CPL x1.5 лучше</span>
+                </div>
+              </div>
+              <div class="case-body">
+                <div>
+                  <h3 class="case-title" data-ru="Маркетинговое агентство SEO" data-en="SEO marketing agency">Маркетинговое агентство SEO</h3>
+                  <p class="case-desc" data-ru="Переработал офферы, лендинги и привлечение из нескольких каналов. Поток заявок вырос, CPL снизился в конкурентной нише." data-en="Reworked offers, landing pages and multi-channel acquisition. Requests grew and CPL dropped in a competitive niche.">
+                    Переработал офферы, лендинги и привлечение из нескольких каналов. Поток заявок вырос, CPL снизился в конкурентной нише.
+                  </p>
+                </div>
+                <div class="case-media">
+                  <div class="photo-slot" data-ru="Скрин 1" data-en="Screenshot 1">Скрин 1</div>
+                  <div class="photo-slot" data-ru="Скрин 2" data-en="Screenshot 2">Скрин 2</div>
+                  <div class="photo-slot" data-ru="Скрин 3" data-en="Screenshot 3">Скрин 3</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="case-card case-extra" data-extra-case hidden>
+              <div class="case-top">
+                <span class="case-meta" data-ru="Мастера Ремонта" data-en="Masters of Renovation">Мастера Ремонта</span>
+                <div class="case-metrics">
+                  <span data-ru="3–5 млн ₽ бюджет" data-en="3–5M ₽ budget">3–5 млн ₽ бюджет</span>
+                  <span data-ru="6 500 ₽ замер" data-en="6,500 ₽ survey">6 500 ₽ замер</span>
+                  <span data-ru="540–560 тыс. ₽ чек" data-en="540–560K ₽ avg check">540–560 тыс. ₽ чек</span>
+                </div>
+              </div>
+              <div class="case-body">
+                <div>
+                  <h3 class="case-title" data-ru="Дизайнерский ремонт квартир" data-en="Designer apartment renovation">Дизайнерский ремонт квартир</h3>
+                  <p class="case-desc" data-ru="Держал стабильный поток заявок при крупном бюджете и контролировал экономику канала в связке с продажами." data-en="Maintained a stable lead flow on a large budget and controlled channel economics together with sales.">
+                    Держал стабильный поток заявок при крупном бюджете и контролировал экономику канала в связке с продажами.
+                  </p>
+                </div>
+                <div class="case-media">
+                  <div class="photo-slot" data-ru="Скрин 1" data-en="Screenshot 1">Скрин 1</div>
+                  <div class="photo-slot" data-ru="Скрин 2" data-en="Screenshot 2">Скрин 2</div>
+                  <div class="photo-slot" data-ru="Скрин 3" data-en="Screenshot 3">Скрин 3</div>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="case-more reveal">
+            <button class="button magnetic" type="button" data-more-cases data-ru="Ещё кейсы" data-en="More cases">Ещё кейсы</button>
+          </div>
+        </section>
+
+        <section id="process" class="process shell">
+          <div class="section-head reveal">
+            <div>
+              <span class="section-kicker" data-ru="Условия" data-en="Terms">Условия</span>
+              <h2 data-ru="По делу, с гарантиями." data-en="Clear work, clear terms.">По делу, с гарантиями.</h2>
+            </div>
+            <p data-ru="Быстро включаюсь, фиксирую условия в договоре и показываю отчёты понятным языком." data-en="I get involved quickly, fix terms in the contract and report in plain language.">
+              Быстро включаюсь, фиксирую условия в договоре и показываю отчёты понятным языком.
+            </p>
+          </div>
+          <div class="process-board">
+            <article class="step reveal">
+              <span class="step-number">01</span>
+              <h3 data-ru="Отчёты без воды" data-en="Clear reports">Отчёты без воды</h3>
+              <p data-ru="На понятном языке: что сделали, что изменилось в цифрах и какой следующий шаг." data-en="In plain language: what was done, what changed in the numbers and what comes next.">На понятном языке: что сделали, что изменилось в цифрах и какой следующий шаг.</p>
+            </article>
+            <article class="step reveal">
+              <span class="step-number">02</span>
+              <h3 data-ru="Оперативная работа" data-en="Fast execution">Оперативная работа</h3>
+              <p data-ru="Не работаю как бутик-агентство: быстро включаюсь, запускаю и даю обратную связь." data-en="I do not work like a boutique agency: I get involved fast, launch and give feedback.">Не работаю как бутик-агентство: быстро включаюсь, запускаю и даю обратную связь.</p>
+            </article>
+            <article class="step reveal">
+              <span class="step-number">03</span>
+              <h3 data-ru="Гарантии в договоре" data-en="Contract guarantees">Гарантии в договоре</h3>
+              <p data-ru="Фиксируем ожидания, формат работы и зоны ответственности до старта." data-en="Expectations, work format and responsibilities are fixed before launch.">Фиксируем ожидания, формат работы и зоны ответственности до старта.</p>
+            </article>
+            <article class="step reveal">
+              <span class="step-number">04</span>
+              <h3 data-ru="Можно в рассрочку" data-en="Installments available">Можно в рассрочку</h3>
+              <p data-ru="Есть возможность рассрочки, если проекту важно войти в работу без резкого кассового давления." data-en="Installments are available when a project needs to start without sharp cash pressure.">Есть возможность рассрочки, если проекту важно войти в работу без резкого кассового давления.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="lead-form" class="lead-form-section shell">
+          <div class="lead-box reveal">
+            <div class="lead-content">
+              <div>
+                <span class="section-kicker" data-ru="Заявка" data-en="Lead form">Заявка</span>
+                <h2 data-ru="Готовы обсудить рост заявок?" data-en="Ready to discuss lead growth?">Готовы обсудить рост заявок?</h2>
+                <p data-ru="Оставьте короткое описание проекта — я посмотрю вводные и отвечу, какой первый шаг даст самый быстрый эффект." data-en="Leave a short project description — I will review the context and reply with the first step that can make the fastest impact.">
+                  Оставьте короткое описание проекта — я посмотрю вводные и отвечу, какой первый шаг даст самый быстрый эффект.
+                </p>
+                <div class="contact-links">
+                  <a class="button primary" href="https://t.me/isrmtnkvmarketing" target="_blank" rel="noreferrer" data-ru="Telegram-канал ↗" data-en="Telegram channel ↗">Telegram-канал ↗</a>
+                  <a class="button telegram" href="https://t.me/isrmtnkv" target="_blank" rel="noreferrer" data-ru="Связаться со мной ↗" data-en="Contact me ↗">Связаться со мной ↗</a>
+                </div>
+              </div>
+
+              <form class="lead-form" data-lead-form>
+                <div class="hp-field" aria-hidden="true">
+                  <label for="company">Компания</label>
+                  <input id="company" name="company" type="text" tabindex="-1" autocomplete="off" />
+                </div>
+                <div class="form-row">
+                  <div class="field">
+                    <label for="name" data-ru="Имя" data-en="Name">Имя</label>
+                    <input id="name" name="name" type="text" autocomplete="name" required data-placeholder-ru="Как к Вам обращаться" data-placeholder-en="How should I address you" placeholder="Как к Вам обращаться" />
+                  </div>
+                  <div class="field">
+                    <label for="contact" data-ru="Контакт" data-en="Contact">Контакт</label>
+                    <input id="contact" name="contact" type="text" autocomplete="email" required data-placeholder-ru="Ваш Telegram, телефон или email" data-placeholder-en="Your Telegram, phone or email" placeholder="Ваш Telegram, телефон или email" />
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="project" data-ru="Проект" data-en="Project">Проект</label>
+                  <textarea id="project" name="project" required data-placeholder-ru="Что Вы продаёте, какие каналы уже есть, где сейчас болит" data-placeholder-en="What you sell, which channels already exist, where the pain is now" placeholder="Что Вы продаёте, какие каналы уже есть, где сейчас болит"></textarea>
+                </div>
+                <button class="button primary" type="submit" data-ru="Отправить заявку" data-en="Send request">Отправить заявку</button>
+                <div class="form-status" role="status" aria-live="polite" data-form-status></div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="shell">
+        <div>
+          <div>© Все права защищены</div>
+          <div>По вопросам <a href="mailto:my@srmtnkv.ru">my@srmtnkv.ru</a></div>
+        </div>
+        <div class="footer-legal">
+          <div>ИП Сыромятников Игорь Романович</div>
+          <div>ОГРНИП 324774600123535</div>
+          <div>ИНН 772036281017</div>
+          <div>Юридический адрес:</div>
+          <div>111675, РОССИЯ, Г МОСКВА, УЛ СВЯТООЗЕРСКАЯ, Д 24, КВ 10</div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const root = document.documentElement;
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const langButton = document.querySelector("[data-lang-toggle]");
+      const leadForm = document.querySelector("[data-lead-form]");
+      const formStatus = document.querySelector("[data-form-status]");
+      const moreCasesButton = document.querySelector("[data-more-cases]");
+      const extraCases = [...document.querySelectorAll("[data-extra-case]")];
+      const isLocalPreview = ["127.0.0.1", "localhost"].includes(window.location.hostname) || window.location.protocol === "file:";
+      const LEAD_ENDPOINT = "";
+
+      function applyLang(lang) {
+        document.documentElement.lang = lang;
+        document.querySelectorAll("[data-ru][data-en]").forEach((node) => {
+          node.textContent = node.dataset[lang];
+        });
+        document.querySelectorAll("[data-placeholder-ru][data-placeholder-en]").forEach((node) => {
+          node.placeholder = node.dataset[`placeholder${lang === "ru" ? "Ru" : "En"}`];
+        });
+        langButton.textContent = lang === "ru" ? "EN" : "RU";
+        langButton.setAttribute("aria-label", lang === "ru" ? "Switch to English" : "Переключить на русский");
+        localStorage.setItem("siteLang", lang);
+        document.querySelectorAll("[data-stat]").forEach((node) => {
+          renderStat(node, node.dataset.done === "true" ? Number(node.dataset.target) : 0);
+        });
+      }
+
+      function statAffix(node, type) {
+        const lang = document.documentElement.lang === "en" ? "en" : "ru";
+        return node.dataset[`${type}${lang === "ru" ? "Ru" : "En"}`] || "";
+      }
+
+      function renderStat(node, value) {
+        const rounded = Math.round(value);
+        const prefix = rounded === 0 ? "" : statAffix(node, "prefix");
+        const suffix = rounded === 0 ? "" : statAffix(node, "suffix");
+        node.textContent = `${prefix}${rounded}${suffix}`;
+      }
+
+      function animateStat(node) {
+        const target = Number(node.dataset.target || 0);
+        const start = performance.now();
+        const duration = 1600;
+        const finish = () => {
+          node.dataset.done = "true";
+          renderStat(node, target);
+        };
+
+        const tick = (now) => {
+          const progress = Math.min(1, (now - start) / duration);
+          const eased = progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+          renderStat(node, target * eased);
+
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+          } else {
+            finish();
+          }
+        };
+
+        setTimeout(finish, duration + 260);
+        requestAnimationFrame(tick);
+      }
+
+      const savedLang = localStorage.getItem("siteLang");
+      applyLang(savedLang === "en" ? "en" : "ru");
+
+      langButton.addEventListener("click", () => {
+        const nextLang = document.documentElement.lang === "ru" ? "en" : "ru";
+        applyLang(nextLang);
+      });
+
+      if (!reduceMotion) {
+        window.addEventListener("pointermove", (event) => {
+          root.style.setProperty("--mx", `${event.clientX}px`);
+          root.style.setProperty("--my", `${event.clientY}px`);
+        });
+
+        window.addEventListener(
+          "scroll",
+          () => {
+            root.style.setProperty("--scroll", `${window.scrollY}`);
+          },
+          { passive: true }
+        );
+      }
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.14 }
+      );
+
+      document.querySelectorAll(".reveal").forEach((item) => revealObserver.observe(item));
+
+      if (moreCasesButton) {
+        moreCasesButton.addEventListener("click", () => {
+          extraCases.forEach((card, index) => {
+            card.hidden = false;
+            card.style.transitionDelay = reduceMotion ? "0ms" : `${index * 90}ms`;
+            requestAnimationFrame(() => {
+              card.classList.add("is-visible");
+            });
+          });
+          moreCasesButton.hidden = true;
+        });
+      }
+
+      const statObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting || entry.target.dataset.done === "true") return;
+
+            if (reduceMotion) {
+              entry.target.dataset.done = "true";
+              renderStat(entry.target, Number(entry.target.dataset.target || 0));
+            } else {
+              animateStat(entry.target);
+            }
+
+            statObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.42 }
+      );
+
+      document.querySelectorAll("[data-stat]").forEach((item) => statObserver.observe(item));
+
+      document.querySelectorAll(".magnetic").forEach((button) => {
+        if (reduceMotion) return;
+        button.addEventListener("pointermove", (event) => {
+          const rect = button.getBoundingClientRect();
+          const x = event.clientX - rect.left - rect.width / 2;
+          const y = event.clientY - rect.top - rect.height / 2;
+          button.style.transform = `translate(${x * 0.05}px, ${y * 0.08}px)`;
+        });
+        button.addEventListener("pointerleave", () => {
+          button.style.transform = "";
+        });
+      });
+
+      const leadSubmitButton = leadForm.querySelector('button[type="submit"]');
+      const formMessages = {
+        ru: {
+          sending: "Отправляю заявку...",
+          success: "Спасибо за заявку! Я свяжусь с Вами в ближайшее время.",
+          error: "Не получилось отправить заявку. Напишите мне напрямую: @isrmtnkv.",
+        },
+        en: {
+          sending: "Sending request...",
+          success: "Thank you for the request. I will contact you shortly.",
+          error: "The request could not be sent. Message me directly: @isrmtnkv.",
+        },
+      };
+
+      leadForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const lang = document.documentElement.lang;
+        const messages = formMessages[lang === "en" ? "en" : "ru"];
+        const formData = new FormData(leadForm);
+        const payload = Object.fromEntries(formData.entries());
+
+        payload.lang = lang;
+        payload.page = window.location.href;
+
+        formStatus.textContent = messages.sending;
+        leadSubmitButton.disabled = true;
+
+        try {
+          if (!LEAD_ENDPOINT) {
+            if (isLocalPreview) {
+              leadForm.reset();
+              formStatus.textContent = messages.success;
+              return;
+            }
+
+            throw new Error("Lead endpoint is not configured");
+          }
+
+          await fetch(LEAD_ENDPOINT, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify(payload),
+          });
+
+          leadForm.reset();
+          formStatus.textContent = messages.success;
+        } catch (error) {
+          if (isLocalPreview) {
+            leadForm.reset();
+            formStatus.textContent = messages.success;
+            console.warn("Lead API is not available in static local preview.", error);
+          } else {
+            formStatus.textContent = messages.error;
+          }
+        } finally {
+          leadSubmitButton.disabled = false;
+        }
+      });
+    </script>
+  </body>
+</html>
