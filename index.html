@@ -53,10 +53,7 @@
         margin: 0;
         color: var(--ink);
         font-family: Manrope, Montserrat, "Helvetica Neue", Arial, sans-serif;
-        background:
-          linear-gradient(180deg, rgba(9, 10, 8, 0.12), #090a08 52%),
-          url("./assets/signal-field.png") center top / 100% auto no-repeat,
-          var(--bg);
+        background: var(--bg);
         overflow-x: hidden;
       }
 
@@ -113,6 +110,23 @@
 
       .page {
         position: relative;
+        display: flow-root;
+        isolation: isolate;
+      }
+
+      .page::before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: -1;
+        height: 820px;
+        content: "";
+        background:
+          linear-gradient(180deg, rgba(9, 10, 8, 0.08), rgba(9, 10, 8, 0.26) 72%, #090a08 100%),
+          url("./assets/signal-field.png") center top / cover no-repeat,
+          #1e3f1f;
+        pointer-events: none;
       }
 
       .shell {
@@ -745,7 +759,7 @@
         margin-top: -28px;
         border-top: 1px solid var(--line);
         border-bottom: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.04);
+        background: rgba(9, 10, 8, 0.78);
         backdrop-filter: blur(16px);
       }
 
@@ -1345,9 +1359,7 @@
       }
 
       .case-media {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 10px;
+        display: block;
       }
 
       .photo-slot {
@@ -1370,6 +1382,168 @@
         border: 1px solid rgba(255, 255, 255, 0.06);
         border-radius: 6px;
         content: "";
+      }
+
+      .case-slider {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(247, 247, 239, 0.18);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.045);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+      }
+
+      .case-slider-track {
+        display: flex;
+        height: 100%;
+        transition: transform 420ms ease;
+      }
+
+      .case-slide {
+        position: relative;
+        display: grid;
+        flex: 0 0 100%;
+        aspect-ratio: 16 / 8.4;
+        place-items: center;
+        background:
+          linear-gradient(135deg, rgba(217, 255, 114, 0.09), rgba(34, 158, 217, 0.08)),
+          #10120f;
+      }
+
+      .case-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .slider-arrow {
+        position: absolute;
+        top: 50%;
+        z-index: 3;
+        display: grid;
+        width: 42px;
+        height: 42px;
+        place-items: center;
+        border: 1px solid rgba(247, 247, 239, 0.16);
+        border-radius: 8px;
+        color: var(--ink);
+        font-size: 24px;
+        font-weight: 800;
+        background: rgba(9, 10, 8, 0.72);
+        box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22);
+        cursor: pointer;
+        transform: translateY(-50%);
+        transition:
+          background 180ms ease,
+          transform 180ms ease,
+          border-color 180ms ease;
+      }
+
+      .slider-arrow:hover {
+        border-color: rgba(217, 255, 114, 0.36);
+        background: rgba(9, 10, 8, 0.9);
+        transform: translateY(-50%) scale(1.04);
+      }
+
+      .slider-arrow.prev {
+        left: 12px;
+      }
+
+      .slider-arrow.next {
+        right: 12px;
+      }
+
+      .slider-dots {
+        position: absolute;
+        right: 0;
+        bottom: 12px;
+        left: 0;
+        z-index: 3;
+        display: flex;
+        gap: 7px;
+        justify-content: center;
+      }
+
+      .slider-dot {
+        width: 8px;
+        height: 8px;
+        padding: 0;
+        border: 0;
+        border-radius: 999px;
+        background: rgba(247, 247, 239, 0.38);
+        cursor: pointer;
+        transition:
+          width 180ms ease,
+          background 180ms ease;
+      }
+
+      .slider-dot.is-active {
+        width: 26px;
+        background: var(--lime);
+      }
+
+      .case-slider.is-nda .case-slide {
+        overflow: hidden;
+        background:
+          linear-gradient(135deg, rgba(217, 255, 114, 0.14), rgba(34, 158, 217, 0.1)),
+          #161814;
+      }
+
+      .nda-proof {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        opacity: 0.46;
+        filter: blur(9px);
+        transform: scale(1.06);
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+          linear-gradient(135deg, rgba(247, 247, 239, 0.5), rgba(247, 247, 239, 0.12) 36%, rgba(34, 158, 217, 0.18));
+        background-size: 42px 42px, 42px 42px, cover;
+      }
+
+      .nda-proof::before,
+      .nda-proof::after {
+        position: absolute;
+        content: "";
+      }
+
+      .nda-proof::before {
+        inset: 12% 11%;
+        border-radius: 8px;
+        background:
+          repeating-linear-gradient(180deg, rgba(247, 247, 239, 0.64) 0 5px, transparent 5px 15px),
+          rgba(255, 255, 255, 0.14);
+      }
+
+      .nda-proof::after {
+        inset: 22% 18% auto;
+        height: 34%;
+        border-radius: 8px;
+        background:
+          linear-gradient(90deg, rgba(217, 255, 114, 0.6), transparent 28%),
+          repeating-linear-gradient(180deg, rgba(9, 10, 8, 0.55) 0 5px, transparent 5px 18px);
+      }
+
+      .nda-label {
+        position: absolute;
+        z-index: 2;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 126px;
+        min-height: 56px;
+        padding: 0 24px;
+        border: 1px solid rgba(217, 255, 114, 0.38);
+        border-radius: 8px;
+        color: var(--dark-text);
+        font-size: 23px;
+        font-weight: 800;
+        letter-spacing: 0;
+        background: var(--lime);
+        box-shadow: 0 22px 58px rgba(217, 255, 114, 0.22);
       }
 
       .case-tags {
@@ -1679,6 +1853,10 @@
         .shell {
           width: calc(100% - 24px);
           max-width: 720px;
+        }
+
+        .page::before {
+          display: none;
         }
 
         .topbar {
@@ -2063,8 +2241,25 @@
         }
 
         .case-media {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 7px;
+          display: block;
+        }
+
+        .case-slide {
+          aspect-ratio: 1.16 / 1;
+        }
+
+        .slider-arrow {
+          width: 36px;
+          height: 36px;
+          font-size: 20px;
+        }
+
+        .slider-arrow.prev {
+          left: 8px;
+        }
+
+        .slider-arrow.next {
+          right: 8px;
         }
 
         .photo-slot {
@@ -2510,9 +2705,26 @@
                   </p>
                 </div>
                 <div class="case-media">
-                  <div class="photo-slot" data-ru="Скрин 1" data-en="Screenshot 1">Скрин 1</div>
-                  <div class="photo-slot" data-ru="Скрин 2" data-en="Screenshot 2">Скрин 2</div>
-                  <div class="photo-slot" data-ru="Скрин 3" data-en="Screenshot 3">Скрин 3</div>
+                  <div class="case-slider" data-case-slider>
+                    <div class="case-slider-track">
+                      <div class="case-slide">
+                        <img src="./assets/case-citadello-direct.png" alt="Citadello: статистика рекламных кампаний" />
+                      </div>
+                      <div class="case-slide">
+                        <img src="./assets/case-citadello-miro.png" alt="Citadello: карта стратегии и офферов" />
+                      </div>
+                      <div class="case-slide">
+                        <img src="./assets/case-citadello-report.png" alt="Citadello: отчёт по воронке и каналам" />
+                      </div>
+                    </div>
+                    <button class="slider-arrow prev" type="button" aria-label="Предыдущий скрин" data-slider-prev>‹</button>
+                    <button class="slider-arrow next" type="button" aria-label="Следующий скрин" data-slider-next>›</button>
+                    <div class="slider-dots" aria-hidden="true">
+                      <button class="slider-dot is-active" type="button" data-slider-dot></button>
+                      <button class="slider-dot" type="button" data-slider-dot></button>
+                      <button class="slider-dot" type="button" data-slider-dot></button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </article>
@@ -2534,9 +2746,26 @@
                   </p>
                 </div>
                 <div class="case-media">
-                  <div class="photo-slot" data-ru="Скрин 1" data-en="Screenshot 1">Скрин 1</div>
-                  <div class="photo-slot" data-ru="Скрин 2" data-en="Screenshot 2">Скрин 2</div>
-                  <div class="photo-slot" data-ru="Скрин 3" data-en="Screenshot 3">Скрин 3</div>
+                  <div class="case-slider" data-case-slider>
+                    <div class="case-slider-track">
+                      <div class="case-slide">
+                        <img src="./assets/case-axioom-report.png" alt="Axioom: сводная таблица по каналам" />
+                      </div>
+                      <div class="case-slide">
+                        <img src="./assets/case-axioom-direct.png" alt="Axioom: рекламные кампании в Директ Про" />
+                      </div>
+                      <div class="case-slide">
+                        <img src="./assets/case-axioom-pages.png" alt="Axioom: макеты страниц и посадочных" />
+                      </div>
+                    </div>
+                    <button class="slider-arrow prev" type="button" aria-label="Предыдущий скрин" data-slider-prev>‹</button>
+                    <button class="slider-arrow next" type="button" aria-label="Следующий скрин" data-slider-next>›</button>
+                    <div class="slider-dots" aria-hidden="true">
+                      <button class="slider-dot is-active" type="button" data-slider-dot></button>
+                      <button class="slider-dot" type="button" data-slider-dot></button>
+                      <button class="slider-dot" type="button" data-slider-dot></button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </article>
@@ -2558,9 +2787,29 @@
                   </p>
                 </div>
                 <div class="case-media">
-                  <div class="photo-slot" data-ru="Скрин 1" data-en="Screenshot 1">Скрин 1</div>
-                  <div class="photo-slot" data-ru="Скрин 2" data-en="Screenshot 2">Скрин 2</div>
-                  <div class="photo-slot" data-ru="Скрин 3" data-en="Screenshot 3">Скрин 3</div>
+                  <div class="case-slider is-nda" data-case-slider>
+                    <div class="case-slider-track">
+                      <div class="case-slide">
+                        <div class="nda-proof" aria-hidden="true"></div>
+                        <span class="nda-label">NDA</span>
+                      </div>
+                      <div class="case-slide">
+                        <div class="nda-proof" aria-hidden="true"></div>
+                        <span class="nda-label">NDA</span>
+                      </div>
+                      <div class="case-slide">
+                        <div class="nda-proof" aria-hidden="true"></div>
+                        <span class="nda-label">NDA</span>
+                      </div>
+                    </div>
+                    <button class="slider-arrow prev" type="button" aria-label="Предыдущий скрин" data-slider-prev>‹</button>
+                    <button class="slider-arrow next" type="button" aria-label="Следующий скрин" data-slider-next>›</button>
+                    <div class="slider-dots" aria-hidden="true">
+                      <button class="slider-dot is-active" type="button" data-slider-dot></button>
+                      <button class="slider-dot" type="button" data-slider-dot></button>
+                      <button class="slider-dot" type="button" data-slider-dot></button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </article>
@@ -2582,9 +2831,26 @@
                   </p>
                 </div>
                 <div class="case-media">
-                  <div class="photo-slot" data-ru="Скрин 1" data-en="Screenshot 1">Скрин 1</div>
-                  <div class="photo-slot" data-ru="Скрин 2" data-en="Screenshot 2">Скрин 2</div>
-                  <div class="photo-slot" data-ru="Скрин 3" data-en="Screenshot 3">Скрин 3</div>
+                  <div class="case-slider" data-case-slider>
+                    <div class="case-slider-track">
+                      <div class="case-slide">
+                        <img src="./assets/case-citadello-direct.png" alt="Citadello: статистика рекламных кампаний" />
+                      </div>
+                      <div class="case-slide">
+                        <img src="./assets/case-citadello-miro.png" alt="Citadello: карта стратегии и офферов" />
+                      </div>
+                      <div class="case-slide">
+                        <img src="./assets/case-citadello-report.png" alt="Citadello: отчёт по воронке и каналам" />
+                      </div>
+                    </div>
+                    <button class="slider-arrow prev" type="button" aria-label="Предыдущий скрин" data-slider-prev>‹</button>
+                    <button class="slider-arrow next" type="button" aria-label="Следующий скрин" data-slider-next>›</button>
+                    <div class="slider-dots" aria-hidden="true">
+                      <button class="slider-dot is-active" type="button" data-slider-dot></button>
+                      <button class="slider-dot" type="button" data-slider-dot></button>
+                      <button class="slider-dot" type="button" data-slider-dot></button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </article>
@@ -2606,9 +2872,26 @@
                   </p>
                 </div>
                 <div class="case-media">
-                  <div class="photo-slot" data-ru="Скрин 1" data-en="Screenshot 1">Скрин 1</div>
-                  <div class="photo-slot" data-ru="Скрин 2" data-en="Screenshot 2">Скрин 2</div>
-                  <div class="photo-slot" data-ru="Скрин 3" data-en="Screenshot 3">Скрин 3</div>
+                  <div class="case-slider" data-case-slider>
+                    <div class="case-slider-track">
+                      <div class="case-slide">
+                        <img src="./assets/case-axioom-report.png" alt="Axioom: сводная таблица по каналам" />
+                      </div>
+                      <div class="case-slide">
+                        <img src="./assets/case-axioom-direct.png" alt="Axioom: рекламные кампании в Директ Про" />
+                      </div>
+                      <div class="case-slide">
+                        <img src="./assets/case-axioom-pages.png" alt="Axioom: макеты страниц и посадочных" />
+                      </div>
+                    </div>
+                    <button class="slider-arrow prev" type="button" aria-label="Предыдущий скрин" data-slider-prev>‹</button>
+                    <button class="slider-arrow next" type="button" aria-label="Следующий скрин" data-slider-next>›</button>
+                    <div class="slider-dots" aria-hidden="true">
+                      <button class="slider-dot is-active" type="button" data-slider-dot></button>
+                      <button class="slider-dot" type="button" data-slider-dot></button>
+                      <button class="slider-dot" type="button" data-slider-dot></button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </article>
@@ -2630,9 +2913,29 @@
                   </p>
                 </div>
                 <div class="case-media">
-                  <div class="photo-slot" data-ru="Скрин 1" data-en="Screenshot 1">Скрин 1</div>
-                  <div class="photo-slot" data-ru="Скрин 2" data-en="Screenshot 2">Скрин 2</div>
-                  <div class="photo-slot" data-ru="Скрин 3" data-en="Screenshot 3">Скрин 3</div>
+                  <div class="case-slider is-nda" data-case-slider>
+                    <div class="case-slider-track">
+                      <div class="case-slide">
+                        <div class="nda-proof" aria-hidden="true"></div>
+                        <span class="nda-label">NDA</span>
+                      </div>
+                      <div class="case-slide">
+                        <div class="nda-proof" aria-hidden="true"></div>
+                        <span class="nda-label">NDA</span>
+                      </div>
+                      <div class="case-slide">
+                        <div class="nda-proof" aria-hidden="true"></div>
+                        <span class="nda-label">NDA</span>
+                      </div>
+                    </div>
+                    <button class="slider-arrow prev" type="button" aria-label="Предыдущий скрин" data-slider-prev>‹</button>
+                    <button class="slider-arrow next" type="button" aria-label="Следующий скрин" data-slider-next>›</button>
+                    <div class="slider-dots" aria-hidden="true">
+                      <button class="slider-dot is-active" type="button" data-slider-dot></button>
+                      <button class="slider-dot" type="button" data-slider-dot></button>
+                      <button class="slider-dot" type="button" data-slider-dot></button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </article>
@@ -2744,6 +3047,7 @@
       const formStatus = document.querySelector("[data-form-status]");
       const moreCasesButton = document.querySelector("[data-more-cases]");
       const extraCases = [...document.querySelectorAll("[data-extra-case]")];
+      const caseSliders = [...document.querySelectorAll("[data-case-slider]")];
       const isLocalPreview = ["127.0.0.1", "localhost"].includes(window.location.hostname) || window.location.protocol === "file:";
       const LEAD_ENDPOINT = "";
 
@@ -2876,6 +3180,35 @@
           { passive: true }
         );
       }
+
+      function initCaseSlider(slider) {
+        const track = slider.querySelector(".case-slider-track");
+        const slides = [...slider.querySelectorAll(".case-slide")];
+        const dots = [...slider.querySelectorAll("[data-slider-dot]")];
+        const prev = slider.querySelector("[data-slider-prev]");
+        const next = slider.querySelector("[data-slider-next]");
+        let activeIndex = 0;
+
+        const goTo = (nextIndex) => {
+          if (!track || slides.length === 0) return;
+
+          activeIndex = (nextIndex + slides.length) % slides.length;
+          track.style.transform = `translateX(${-activeIndex * 100}%)`;
+          dots.forEach((dot, index) => {
+            dot.classList.toggle("is-active", index === activeIndex);
+          });
+        };
+
+        prev?.addEventListener("click", () => goTo(activeIndex - 1));
+        next?.addEventListener("click", () => goTo(activeIndex + 1));
+        dots.forEach((dot, index) => {
+          dot.addEventListener("click", () => goTo(index));
+        });
+
+        goTo(0);
+      }
+
+      caseSliders.forEach(initCaseSlider);
 
       const revealObserver = new IntersectionObserver(
         (entries) => {
