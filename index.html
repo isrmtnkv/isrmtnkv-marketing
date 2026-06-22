@@ -202,11 +202,63 @@
         background: rgba(255, 255, 255, 0.07);
       }
 
+      .nav-lang-toggle {
+        display: none;
+      }
+
       .header-actions {
         display: flex;
         gap: 10px;
         align-items: center;
         justify-content: end;
+      }
+
+      .menu-toggle {
+        display: none;
+        width: 48px;
+        height: 42px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.055);
+        cursor: pointer;
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease,
+          background 180ms ease;
+      }
+
+      .menu-toggle:hover,
+      .menu-toggle[aria-expanded="true"] {
+        border-color: rgba(217, 255, 114, 0.36);
+        background: rgba(255, 255, 255, 0.09);
+      }
+
+      .menu-toggle span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        border-radius: 2px;
+        background: currentColor;
+        transition:
+          transform 180ms ease,
+          opacity 180ms ease;
+      }
+
+      .menu-toggle span + span {
+        margin-top: 4px;
+      }
+
+      .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+      }
+
+      .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
       }
 
       .lang-toggle {
@@ -237,6 +289,9 @@
         min-height: 42px;
         border-radius: 8px;
         font-weight: 800;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
         transition:
           transform 190ms ease,
           box-shadow 190ms ease,
@@ -1611,22 +1666,24 @@
         body {
           min-width: 0;
           background:
-            linear-gradient(180deg, rgba(9, 10, 8, 0.1), #090a08 46%),
-            url("./assets/signal-field.png") center top / 210% auto no-repeat,
+            linear-gradient(180deg, rgba(9, 10, 8, 0.06), #090a08 740px),
+            url("./assets/signal-field.png") center top / cover no-repeat,
             var(--bg);
         }
 
         .shell {
-          width: min(100% - 28px, 720px);
+          width: calc(100% - 24px);
+          max-width: 720px;
         }
 
         .topbar {
           top: 10px;
+          position: sticky;
           grid-template-columns: minmax(0, 1fr) auto;
           gap: 10px;
           min-height: 0;
           margin-top: 10px;
-          padding: 10px;
+          padding: 10px 58px 10px 10px;
         }
 
         .brand {
@@ -1647,39 +1704,99 @@
         }
 
         .nav {
-          grid-column: 1 / -1;
+          position: absolute;
+          top: calc(100% + 8px);
+          right: 0;
+          left: 0;
+          display: none;
+          flex-direction: column;
+          align-items: stretch;
           justify-content: start;
-          width: 100%;
-          overflow-x: auto;
-          scrollbar-width: none;
+          width: auto;
+          padding: 8px;
+          border-color: var(--line);
+          background: rgba(12, 14, 11, 0.94);
+          box-shadow: 0 18px 70px rgba(0, 0, 0, 0.38);
+          backdrop-filter: blur(24px);
         }
 
-        .nav::-webkit-scrollbar {
-          display: none;
+        .nav.is-open {
+          display: flex;
         }
 
         .nav a {
-          flex: 0 0 auto;
-          padding: 9px 11px;
-          font-size: 12px;
+          width: 100%;
+          padding: 13px 14px;
+          font-size: 13px;
+        }
+
+        .nav-lang-toggle {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          min-height: 44px;
+          border: 1px solid rgba(255, 255, 255, 0.075);
+          border-radius: 7px;
+          color: var(--ink);
+          font-weight: 800;
+          background: rgba(255, 255, 255, 0.055);
+          cursor: pointer;
         }
 
         .header-actions {
           gap: 8px;
         }
 
+        .menu-toggle {
+          position: fixed;
+          top: 20px;
+          right: 22px;
+          z-index: 80;
+          display: inline-flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          color: var(--dark-text);
+          border-color: transparent;
+          background: var(--lime);
+          box-shadow: 0 10px 28px rgba(217, 255, 114, 0.2);
+        }
+
         .lang-toggle,
-        .tg-icon {
+        .tg-icon,
+        .menu-toggle {
           width: 42px;
           height: 38px;
           min-height: 38px;
         }
 
+        .topbar .tg-icon {
+          display: none;
+        }
+
+        .topbar .lang-toggle {
+          display: none;
+        }
+
         .hero {
+          position: relative;
           grid-template-columns: 1fr;
-          gap: 34px;
+          gap: 0;
           min-height: auto;
-          padding: 42px 0 30px;
+          padding: 42px 0 46px;
+          isolation: isolate;
+        }
+
+        .hero::before {
+          position: absolute;
+          inset: -92px calc((100vw - 100%) / -2) -24px;
+          z-index: -1;
+          content: "";
+          background:
+            linear-gradient(180deg, rgba(9, 10, 8, 0.08), rgba(9, 10, 8, 0.22) 72%, #090a08 100%),
+            url("./assets/signal-field.png") center top / cover no-repeat,
+            #214c22;
         }
 
         .eyebrow {
@@ -1698,6 +1815,7 @@
           margin-top: 22px;
           font-size: 18px;
           line-height: 1.5;
+          overflow-wrap: break-word;
         }
 
         .hero-actions {
@@ -1722,8 +1840,7 @@
         }
 
         .stage-wrap {
-          min-height: 0;
-          perspective: none;
+          display: none;
         }
 
         .growth-board {
@@ -1989,7 +2106,7 @@
         }
 
         .brand span:last-child {
-          max-width: 168px;
+          max-width: 136px;
         }
 
         h1 {
@@ -2078,11 +2195,18 @@
           <span data-ru="Маркетолог на аутсорсе" data-en="Outsourced marketer">Маркетолог на аутсорсе</span>
         </a>
 
+        <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-menu-toggle>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
         <nav class="nav" aria-label="Разделы сайта">
           <a href="#stats" data-ru="Цифры" data-en="Numbers">Цифры</a>
           <a href="#offer" data-ru="Каналы" data-en="Channels">Каналы</a>
           <a href="#cases" data-ru="Кейсы" data-en="Cases">Кейсы</a>
           <a href="#lead-form" data-ru="Заявка" data-en="Lead form">Заявка</a>
+          <button class="nav-lang-toggle" type="button" aria-label="Switch language" data-mobile-lang-toggle>EN</button>
         </nav>
 
         <div class="header-actions">
@@ -2112,7 +2236,6 @@
             <div class="hero-actions reveal">
               <a class="button primary magnetic" href="#lead-form" data-ru="Обсудить проект ↗" data-en="Discuss a project ↗">Обсудить проект ↗</a>
               <a class="button telegram magnetic" href="https://t.me/isrmtnkv" target="_blank" rel="noreferrer" data-ru="Связаться со мной ↗" data-en="Contact me ↗">Связаться со мной ↗</a>
-              <a class="button magnetic" href="#cases" data-ru="Смотреть кейсы" data-en="View cases">Смотреть кейсы</a>
             </div>
             <div class="hero-mini reveal">
               <div class="mini-item">
@@ -2580,7 +2703,10 @@
     <script>
       const root = document.documentElement;
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const nav = document.querySelector(".nav");
+      const menuToggle = document.querySelector("[data-menu-toggle]");
       const langButton = document.querySelector("[data-lang-toggle]");
+      const mobileLangButton = document.querySelector("[data-mobile-lang-toggle]");
       const leadForm = document.querySelector("[data-lead-form]");
       const formStatus = document.querySelector("[data-form-status]");
       const moreCasesButton = document.querySelector("[data-more-cases]");
@@ -2597,7 +2723,13 @@
           node.placeholder = node.dataset[`placeholder${lang === "ru" ? "Ru" : "En"}`];
         });
         langButton.textContent = lang === "ru" ? "EN" : "RU";
+        if (mobileLangButton) {
+          mobileLangButton.textContent = lang === "ru" ? "English" : "Русский";
+        }
         langButton.setAttribute("aria-label", lang === "ru" ? "Switch to English" : "Переключить на русский");
+        if (mobileLangButton) {
+          mobileLangButton.setAttribute("aria-label", lang === "ru" ? "Switch to English" : "Переключить на русский");
+        }
         localStorage.setItem("siteLang", lang);
         document.querySelectorAll("[data-stat]").forEach((node) => {
           renderStat(node, node.dataset.done === "true" ? Number(node.dataset.target) : 0);
@@ -2647,7 +2779,55 @@
       langButton.addEventListener("click", () => {
         const nextLang = document.documentElement.lang === "ru" ? "en" : "ru";
         applyLang(nextLang);
+        setMenuOpen(false);
       });
+
+      if (mobileLangButton) {
+        mobileLangButton.addEventListener("click", () => {
+          const nextLang = document.documentElement.lang === "ru" ? "en" : "ru";
+          applyLang(nextLang);
+          setMenuOpen(false);
+        });
+      }
+
+      function setMenuOpen(isOpen) {
+        if (!menuToggle || !nav) return;
+
+        nav.classList.toggle("is-open", isOpen);
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? (document.documentElement.lang === "ru" ? "Закрыть меню" : "Close menu")
+            : (document.documentElement.lang === "ru" ? "Открыть меню" : "Open menu")
+        );
+      }
+
+      if (menuToggle && nav) {
+        setMenuOpen(false);
+
+        menuToggle.addEventListener("click", () => {
+          setMenuOpen(menuToggle.getAttribute("aria-expanded") !== "true");
+        });
+
+        nav.addEventListener("click", (event) => {
+          if (event.target.closest("a")) {
+            setMenuOpen(false);
+          }
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            setMenuOpen(false);
+          }
+        });
+
+        window.addEventListener("resize", () => {
+          if (window.innerWidth > 900) {
+            setMenuOpen(false);
+          }
+        });
+      }
 
       if (!reduceMotion) {
         window.addEventListener("pointermove", (event) => {
