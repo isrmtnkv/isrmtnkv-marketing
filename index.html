@@ -147,6 +147,11 @@
         text-transform: uppercase;
       }
 
+      .brand-short,
+      .mobile-label {
+        display: none;
+      }
+
       .brand-mark {
         position: relative;
         width: 30px;
@@ -1692,6 +1697,18 @@
           font-size: 11px;
         }
 
+        .brand-label {
+          display: none;
+        }
+
+        .brand-short {
+          display: inline;
+          overflow: hidden;
+          font-size: 13px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
         .brand span:last-child {
           overflow: hidden;
           text-overflow: ellipsis;
@@ -1745,13 +1762,13 @@
         }
 
         .header-actions {
-          gap: 8px;
+          display: none;
         }
 
         .menu-toggle {
-          position: fixed;
-          top: 20px;
-          right: 22px;
+          position: absolute;
+          top: 50%;
+          right: 10px;
           z-index: 80;
           display: inline-flex;
           flex-direction: column;
@@ -1761,6 +1778,7 @@
           border-color: transparent;
           background: var(--lime);
           box-shadow: 0 10px 28px rgba(217, 255, 114, 0.2);
+          transform: translateY(-50%);
         }
 
         .lang-toggle,
@@ -1822,6 +1840,14 @@
           flex-direction: column;
           align-items: stretch;
           margin-top: 26px;
+        }
+
+        .desktop-label {
+          display: none;
+        }
+
+        .mobile-label {
+          display: inline;
         }
 
         .button {
@@ -2105,7 +2131,7 @@
           width: calc(100% - 24px);
         }
 
-        .brand span:last-child {
+        .brand-short {
           max-width: 136px;
         }
 
@@ -2192,7 +2218,8 @@
       <header class="topbar shell">
         <a href="#top" class="brand" aria-label="На первый экран">
           <span class="brand-mark" aria-hidden="true"></span>
-          <span data-ru="Маркетолог на аутсорсе" data-en="Outsourced marketer">Маркетолог на аутсорсе</span>
+          <span class="brand-label" data-ru="Маркетолог на аутсорсе" data-en="Outsourced marketer">Маркетолог на аутсорсе</span>
+          <span class="brand-short" aria-hidden="true">ISRMTNKV</span>
         </a>
 
         <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-menu-toggle>
@@ -2234,8 +2261,14 @@
               Беру маркетинг под управление: усиливаю офферы, запускаю каналы и довожу заявки до понятной экономики.
             </p>
             <div class="hero-actions reveal">
-              <a class="button primary magnetic" href="#lead-form" data-ru="Обсудить проект ↗" data-en="Discuss a project ↗">Обсудить проект ↗</a>
-              <a class="button telegram magnetic" href="https://t.me/isrmtnkv" target="_blank" rel="noreferrer" data-ru="Связаться со мной ↗" data-en="Contact me ↗">Связаться со мной ↗</a>
+              <a class="button primary magnetic" href="#lead-form">
+                <span class="desktop-label" data-ru="Обсудить проект ↗" data-en="Discuss a project ↗">Обсудить проект ↗</span>
+                <span class="mobile-label" data-ru="Обсудить проект" data-en="Discuss a project">Обсудить проект</span>
+              </a>
+              <a class="button telegram magnetic" href="https://t.me/isrmtnkv" target="_blank" rel="noreferrer">
+                <span class="desktop-label" data-ru="Связаться со мной ↗" data-en="Contact me ↗">Связаться со мной ↗</span>
+                <span class="mobile-label" data-ru="Связаться со мной" data-en="Contact me">Связаться со мной</span>
+              </a>
             </div>
             <div class="hero-mini reveal">
               <div class="mini-item">
