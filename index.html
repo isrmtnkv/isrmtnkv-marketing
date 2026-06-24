@@ -1236,6 +1236,38 @@
         gap: 12px;
       }
 
+      .case-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: -8px 0 22px;
+      }
+
+      .case-filter {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 38px;
+        padding: 0 13px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: rgba(247, 247, 239, 0.72);
+        font-weight: 800;
+        background: rgba(255, 255, 255, 0.045);
+        cursor: pointer;
+        transition:
+          border-color 180ms ease,
+          color 180ms ease,
+          background 180ms ease;
+      }
+
+      .case-filter:hover,
+      .case-filter.is-active {
+        border-color: rgba(217, 255, 114, 0.36);
+        color: var(--dark-text);
+        background: var(--lime);
+      }
+
       .case-more {
         display: flex;
         justify-content: center;
@@ -1257,6 +1289,10 @@
       .case-extra.is-visible {
         opacity: 1;
         transform: translateY(0);
+      }
+
+      .case-card.is-filter-hidden {
+        display: none;
       }
 
       .case-card {
@@ -1324,6 +1360,15 @@
         color: var(--muted);
         font-size: 16px;
         line-height: 1.5;
+      }
+
+      .case-note {
+        display: block;
+        max-width: 760px;
+        margin-top: 10px;
+        color: rgba(247, 247, 239, 0.48);
+        font-size: 12px;
+        line-height: 1.4;
       }
 
       .case-body {
@@ -2225,6 +2270,21 @@
           font-size: 13px;
         }
 
+        .case-filters {
+          flex-wrap: nowrap;
+          margin-bottom: 18px;
+          overflow-x: auto;
+          padding-bottom: 4px;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        .case-filter {
+          flex: 0 0 auto;
+          min-height: 36px;
+          padding: 0 11px;
+          font-size: 13px;
+        }
+
         .case-title {
           margin-top: 14px;
           font-size: 27px;
@@ -2687,8 +2747,17 @@
             </p>
           </div>
 
+          <div class="case-filters reveal" aria-label="Фильтр кейсов по услугам">
+            <button class="case-filter is-active" type="button" data-case-filter="all" data-ru="Все" data-en="All">Все</button>
+            <button class="case-filter" type="button" data-case-filter="yandex" data-ru="Яндекс.Директ" data-en="Yandex Direct">Яндекс.Директ</button>
+            <button class="case-filter" type="button" data-case-filter="tg" data-ru="ТГ" data-en="TG">ТГ</button>
+            <button class="case-filter" type="button" data-case-filter="vk">ВК</button>
+            <button class="case-filter" type="button" data-case-filter="google" data-ru="Гугл" data-en="Google">Гугл</button>
+            <button class="case-filter" type="button" data-case-filter="fb" data-ru="ФБ" data-en="FB">ФБ</button>
+          </div>
+
           <div class="case-stack">
-            <article class="case-card reveal">
+            <article class="case-card reveal" data-services="yandex tg">
               <div class="case-top">
                 <span class="case-meta">Citadello</span>
                 <div class="case-metrics">
@@ -2729,7 +2798,7 @@
               </div>
             </article>
 
-            <article class="case-card reveal">
+            <article class="case-card reveal" data-services="yandex vk">
               <div class="case-top">
                 <span class="case-meta">Axioom</span>
                 <div class="case-metrics">
@@ -2770,7 +2839,7 @@
               </div>
             </article>
 
-            <article class="case-card reveal">
+            <article class="case-card reveal" data-services="yandex vk tg">
               <div class="case-top">
                 <span class="case-meta" data-ru="Мастера Ремонта" data-en="Masters of Renovation">Мастера Ремонта</span>
                 <div class="case-metrics">
@@ -2814,40 +2883,37 @@
               </div>
             </article>
 
-            <article class="case-card case-extra" data-extra-case hidden>
+            <article class="case-card case-extra" data-extra-case data-services="google fb" hidden>
               <div class="case-top">
-                <span class="case-meta">Citadello</span>
+                <span class="case-meta" data-ru="Студия балета и растяжки" data-en="Ballet and stretching studio">Студия балета и растяжки</span>
                 <div class="case-metrics">
-                  <span data-ru="400–600 лидов/мес" data-en="400–600 leads/mo">400–600 лидов/мес</span>
-                  <span>CPL -55%</span>
-                  <span data-ru="54 HADI/год" data-en="54 HADI/year">54 HADI/год</span>
+                  <span data-ru="65 AED (~$18) заявка" data-en="65 AED (~$18) lead">65 AED (~$18) заявка</span>
+                  <span data-ru="10 млн ₽ / мес" data-en="10M ₽ / mo">10 млн ₽ / мес</span>
+                  <span data-ru="54% в квал. лид" data-en="54% to qualified lead">54% в квал. лид</span>
                 </div>
               </div>
               <div class="case-body">
                 <div>
-                  <h3 class="case-title" data-ru="SaaS для интернет-магазинов" data-en="SaaS for online stores">SaaS для интернет-магазинов</h3>
-                  <p class="case-desc" data-ru="Пересобрал позиционирование, офферы и лидогенерацию. Реклама стала прогнозируемой и связанной с качеством лида." data-en="Rebuilt positioning, offers and lead generation. Advertising became predictable and tied to lead quality.">
-                    Пересобрал позиционирование, офферы и лидогенерацию. Реклама стала прогнозируемой и связанной с качеством лида.
+                  <h3 class="case-title" data-ru="Танцевальная студия: Дубай, Канада, Турция" data-en="Dance studio: Dubai, Canada, Turkey">Танцевальная студия: Дубай, Канада, Турция</h3>
+                  <p class="case-desc" data-ru="Google Ads и Facebook / Instagram*: запуск заявок по нескольким гео с контролем стоимости и качества лида." data-en="Google Ads and Facebook / Instagram*: lead generation across several geos with CPL and lead quality control.">
+                    Google Ads и Facebook / Instagram*: запуск заявок по нескольким гео с контролем стоимости и качества лида.
                   </p>
+                  <small class="case-note" data-ru="*Facebook и Instagram принадлежат Meta Platforms Inc., признанной экстремистской организацией и запрещённой в РФ." data-en="*Facebook and Instagram belong to Meta Platforms Inc., which is recognized as extremist and banned in Russia.">*Facebook и Instagram принадлежат Meta Platforms Inc., признанной экстремистской организацией и запрещённой в РФ.</small>
                 </div>
                 <div class="case-media">
                   <div class="case-slider" data-case-slider>
                     <div class="case-slider-track">
                       <div class="case-slide">
-                        <img src="./assets/case-citadello-direct.png" alt="Citadello: статистика рекламных кампаний" />
+                        <img src="./assets/case-ballet-google.jpg" alt="Студия балета: статистика Google Ads" />
                       </div>
                       <div class="case-slide">
-                        <img src="./assets/case-citadello-miro.png" alt="Citadello: карта стратегии и офферов" />
-                      </div>
-                      <div class="case-slide">
-                        <img src="./assets/case-citadello-report.png" alt="Citadello: отчёт по воронке и каналам" />
+                        <img src="./assets/case-ballet-facebook.jpg" alt="Студия балета: статистика Facebook Ads" />
                       </div>
                     </div>
                     <button class="slider-arrow prev" type="button" aria-label="Предыдущий скрин" data-slider-prev>‹</button>
                     <button class="slider-arrow next" type="button" aria-label="Следующий скрин" data-slider-next>›</button>
                     <div class="slider-dots" aria-hidden="true">
                       <button class="slider-dot is-active" type="button" data-slider-dot></button>
-                      <button class="slider-dot" type="button" data-slider-dot></button>
                       <button class="slider-dot" type="button" data-slider-dot></button>
                     </div>
                   </div>
@@ -2855,40 +2921,36 @@
               </div>
             </article>
 
-            <article class="case-card case-extra" data-extra-case hidden>
+            <article class="case-card case-extra" data-extra-case data-services="yandex" hidden>
               <div class="case-top">
-                <span class="case-meta">Axioom</span>
+                <span class="case-meta">LuxAlto</span>
                 <div class="case-metrics">
-                  <span data-ru="+250% заявок" data-en="+250% requests">+250% заявок</span>
-                  <span data-ru="8 млн ₽ / мес" data-en="8M ₽ / mo">8 млн ₽ / мес</span>
-                  <span data-ru="CPL x1.5 лучше" data-en="CPL 1.5x better">CPL x1.5 лучше</span>
+                  <span data-ru="1 млн ₽ бюджет" data-en="1M ₽ budget">1 млн ₽ бюджет</span>
+                  <span data-ru="25 млн ₽ / мес" data-en="25M ₽ / mo">25 млн ₽ / мес</span>
+                  <span data-ru="2 430 ₽ лид" data-en="2,430 ₽ lead">2 430 ₽ лид</span>
                 </div>
               </div>
               <div class="case-body">
                 <div>
-                  <h3 class="case-title" data-ru="Маркетинговое агентство SEO" data-en="SEO marketing agency">Маркетинговое агентство SEO</h3>
-                  <p class="case-desc" data-ru="Переработал офферы, лендинги и привлечение из нескольких каналов. Поток заявок вырос, CPL снизился в конкурентной нише." data-en="Reworked offers, landing pages and multi-channel acquisition. Requests grew and CPL dropped in a competitive niche.">
-                    Переработал офферы, лендинги и привлечение из нескольких каналов. Поток заявок вырос, CPL снизился в конкурентной нише.
+                  <h3 class="case-title" data-ru="Интернет-магазин столов с регулировкой высоты" data-en="Height-adjustable desks e-commerce">Интернет-магазин столов с регулировкой высоты</h3>
+                  <p class="case-desc" data-ru="Яндекс.Директ, SEO, WB/OZON и работа над сайтом: трафик, продажи и товарная аналитика в одной системе." data-en="Yandex Direct, SEO, WB/OZON and website work: traffic, sales and product analytics in one system.">
+                    Яндекс.Директ, SEO, WB/OZON и работа над сайтом: трафик, продажи и товарная аналитика в одной системе.
                   </p>
                 </div>
                 <div class="case-media">
                   <div class="case-slider" data-case-slider>
                     <div class="case-slider-track">
                       <div class="case-slide">
-                        <img src="./assets/case-axioom-report.png" alt="Axioom: сводная таблица по каналам" />
+                        <img src="./assets/case-luxalto-marketplace.jpg" alt="LuxAlto: продажи и заказы на маркетплейсе" />
                       </div>
                       <div class="case-slide">
-                        <img src="./assets/case-axioom-direct.png" alt="Axioom: рекламные кампании в Директ Про" />
-                      </div>
-                      <div class="case-slide">
-                        <img src="./assets/case-axioom-pages.png" alt="Axioom: макеты страниц и посадочных" />
+                        <img src="./assets/case-luxalto-site.png" alt="LuxAlto: сайт интернет-магазина" />
                       </div>
                     </div>
                     <button class="slider-arrow prev" type="button" aria-label="Предыдущий скрин" data-slider-prev>‹</button>
                     <button class="slider-arrow next" type="button" aria-label="Следующий скрин" data-slider-next>›</button>
                     <div class="slider-dots" aria-hidden="true">
                       <button class="slider-dot is-active" type="button" data-slider-dot></button>
-                      <button class="slider-dot" type="button" data-slider-dot></button>
                       <button class="slider-dot" type="button" data-slider-dot></button>
                     </div>
                   </div>
@@ -2896,36 +2958,30 @@
               </div>
             </article>
 
-            <article class="case-card case-extra" data-extra-case hidden>
+            <article class="case-card case-extra" data-extra-case data-services="yandex vk tg" hidden>
               <div class="case-top">
-                <span class="case-meta" data-ru="Мастера Ремонта" data-en="Masters of Renovation">Мастера Ремонта</span>
+                <span class="case-meta" data-ru="Онлайн-школа одежды" data-en="Fashion school">Онлайн-школа одежды</span>
                 <div class="case-metrics">
-                  <span data-ru="3–5 млн ₽ бюджет" data-en="3–5M ₽ budget">3–5 млн ₽ бюджет</span>
-                  <span data-ru="6 500 ₽ замер" data-en="6,500 ₽ survey">6 500 ₽ замер</span>
-                  <span data-ru="540–560 тыс. ₽ чек" data-en="540–560K ₽ avg check">540–560 тыс. ₽ чек</span>
+                  <span data-ru="1,5 млн ₽ бюджет" data-en="1.5M ₽ budget">1,5 млн ₽ бюджет</span>
+                  <span data-ru="870 ₽ UQL" data-en="870 ₽ UQL">870 ₽ UQL</span>
+                  <span data-ru="120 тыс. ₽ чек" data-en="120K ₽ avg check">120 тыс. ₽ чек</span>
                 </div>
               </div>
               <div class="case-body">
                 <div>
-                  <h3 class="case-title" data-ru="Дизайнерский ремонт квартир" data-en="Designer apartment renovation">Дизайнерский ремонт квартир</h3>
-                  <p class="case-desc" data-ru="Держал стабильный поток заявок при крупном бюджете и контролировал экономику канала в связке с продажами." data-en="Maintained a stable lead flow on a large budget and controlled channel economics together with sales.">
-                    Держал стабильный поток заявок при крупном бюджете и контролировал экономику канала в связке с продажами.
+                  <h3 class="case-title" data-ru="Школа по созданию бренда одежды" data-en="School for launching a clothing brand">Школа по созданию бренда одежды</h3>
+                  <p class="case-desc" data-ru="Воронки в Telegram и VK, вебинары, сайты, соцсети, таргет VK и Яндекс.Директ для заявок на обучение." data-en="Telegram and VK funnels, webinars, websites, social media, VK targeting and Yandex Direct for education leads.">
+                    Воронки в Telegram и VK, вебинары, сайты, соцсети, таргет VK и Яндекс.Директ для заявок на обучение.
                   </p>
                 </div>
                 <div class="case-media">
-                  <div class="case-slider is-nda" data-case-slider>
+                  <div class="case-slider" data-case-slider>
                     <div class="case-slider-track">
                       <div class="case-slide">
-                        <div class="nda-proof" aria-hidden="true"></div>
-                        <span class="nda-label">NDA</span>
+                        <img src="./assets/case-fashion-direct.jpg" alt="Онлайн-школа одежды: статистика Яндекс.Директ" />
                       </div>
                       <div class="case-slide">
-                        <div class="nda-proof" aria-hidden="true"></div>
-                        <span class="nda-label">NDA</span>
-                      </div>
-                      <div class="case-slide">
-                        <div class="nda-proof" aria-hidden="true"></div>
-                        <span class="nda-label">NDA</span>
+                        <img src="./assets/case-fashion-vk.jpg" alt="Онлайн-школа одежды: статистика VK" />
                       </div>
                     </div>
                     <button class="slider-arrow prev" type="button" aria-label="Предыдущий скрин" data-slider-prev>‹</button>
@@ -2933,7 +2989,34 @@
                     <div class="slider-dots" aria-hidden="true">
                       <button class="slider-dot is-active" type="button" data-slider-dot></button>
                       <button class="slider-dot" type="button" data-slider-dot></button>
-                      <button class="slider-dot" type="button" data-slider-dot></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="case-card case-extra" data-extra-case data-services="vk" hidden>
+              <div class="case-top">
+                <span class="case-meta" data-ru="Онлайн-марафон Мой Бизнес" data-en="My Business online marathon">Онлайн-марафон Мой Бизнес</span>
+                <div class="case-metrics">
+                  <span data-ru="150 тыс. ₽ бюджет" data-en="150K ₽ budget">150 тыс. ₽ бюджет</span>
+                  <span data-ru="988 тыс. просмотров" data-en="988K views">988 тыс. просмотров</span>
+                  <span data-ru="3,1 млн охват" data-en="3.1M reach">3,1 млн охват</span>
+                </div>
+              </div>
+              <div class="case-body">
+                <div>
+                  <h3 class="case-title" data-ru="Таргет VK на 10-часовой эфир" data-en="VK targeting for a 10-hour live stream">Таргет VK на 10-часовой эфир</h3>
+                  <p class="case-desc" data-ru="Продвижение онлайн-марафона ВКонтакте: охват, просмотры и вовлечение на длинный эфир." data-en="Promotion of a VK online marathon: reach, views and engagement for a long live stream.">
+                    Продвижение онлайн-марафона ВКонтакте: охват, просмотры и вовлечение на длинный эфир.
+                  </p>
+                </div>
+                <div class="case-media">
+                  <div class="case-slider" data-case-slider>
+                    <div class="case-slider-track">
+                      <div class="case-slide">
+                        <img src="./assets/case-my-business-vk.jpg" alt="Онлайн-марафон Мой Бизнес: аналитика видео ВКонтакте" />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -3047,7 +3130,11 @@
       const formStatus = document.querySelector("[data-form-status]");
       const moreCasesButton = document.querySelector("[data-more-cases]");
       const extraCases = [...document.querySelectorAll("[data-extra-case]")];
+      const caseCards = [...document.querySelectorAll(".case-card")];
+      const caseFilterButtons = [...document.querySelectorAll("[data-case-filter]")];
       const caseSliders = [...document.querySelectorAll("[data-case-slider]")];
+      let activeCaseFilter = "all";
+      let casesExpanded = false;
       const isLocalPreview = ["127.0.0.1", "localhost"].includes(window.location.hostname) || window.location.protocol === "file:";
       const LEAD_ENDPOINT = "";
 
@@ -3210,6 +3297,41 @@
 
       caseSliders.forEach(initCaseSlider);
 
+      function applyCaseFilter(filter) {
+        activeCaseFilter = filter;
+        const hasChannelFilter = filter !== "all";
+
+        caseFilterButtons.forEach((button) => {
+          button.classList.toggle("is-active", button.dataset.caseFilter === filter);
+        });
+
+        caseCards.forEach((card) => {
+          const services = (card.dataset.services || "").split(" ").filter(Boolean);
+          const matches = filter === "all" || services.includes(filter);
+          const isExtra = card.hasAttribute("data-extra-case");
+
+          card.classList.toggle("is-filter-hidden", !matches);
+
+          if (isExtra) {
+            const shouldShow = hasChannelFilter ? matches : casesExpanded;
+            card.hidden = !shouldShow;
+            card.classList.toggle("is-visible", shouldShow);
+          }
+        });
+
+        if (moreCasesButton) {
+          moreCasesButton.hidden = hasChannelFilter || casesExpanded;
+        }
+      }
+
+      caseFilterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          applyCaseFilter(button.dataset.caseFilter || "all");
+        });
+      });
+
+      applyCaseFilter("all");
+
       const revealObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -3226,14 +3348,11 @@
 
       if (moreCasesButton) {
         moreCasesButton.addEventListener("click", () => {
+          casesExpanded = true;
           extraCases.forEach((card, index) => {
-            card.hidden = false;
             card.style.transitionDelay = reduceMotion ? "0ms" : `${index * 90}ms`;
-            requestAnimationFrame(() => {
-              card.classList.add("is-visible");
-            });
           });
-          moreCasesButton.hidden = true;
+          applyCaseFilter(activeCaseFilter);
         });
       }
 
