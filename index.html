@@ -1371,6 +1371,64 @@
         line-height: 1.4;
       }
 
+      .case-functions {
+        display: grid;
+        gap: 8px;
+        margin: 16px 0 0;
+        padding: 0;
+        color: rgba(247, 247, 239, 0.72);
+        font-size: 14px;
+        line-height: 1.45;
+        list-style: none;
+      }
+
+      .case-functions li {
+        position: relative;
+        padding-left: 18px;
+      }
+
+      .case-functions li::before {
+        position: absolute;
+        top: 0.72em;
+        left: 0;
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: var(--lime);
+        content: "";
+        transform: translateY(-50%);
+      }
+
+      .case-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .case-links a,
+      .case-links span {
+        display: inline-flex;
+        align-items: center;
+        min-height: 34px;
+        padding: 0 11px;
+        border: 1px solid rgba(247, 247, 239, 0.12);
+        border-radius: 8px;
+        color: rgba(247, 247, 239, 0.78);
+        font-size: 12px;
+        font-weight: 800;
+        background: rgba(255, 255, 255, 0.052);
+      }
+
+      .case-links a {
+        border-color: rgba(217, 255, 114, 0.18);
+      }
+
+      .case-links a:hover {
+        color: var(--dark-text);
+        background: var(--lime);
+      }
+
       .case-body {
         display: grid;
         grid-template-columns: 0.82fr 1.18fr;
@@ -2294,6 +2352,23 @@
           font-size: 15px;
         }
 
+        .case-functions {
+          gap: 7px;
+          margin-top: 13px;
+          font-size: 13px;
+        }
+
+        .case-links {
+          gap: 7px;
+          margin-top: 13px;
+        }
+
+        .case-links a,
+        .case-links span {
+          min-height: 32px;
+          padding: 0 9px;
+        }
+
         .case-body {
           grid-template-columns: 1fr;
           gap: 15px;
@@ -2750,10 +2825,10 @@
           <div class="case-filters reveal" aria-label="Фильтр кейсов по услугам">
             <button class="case-filter is-active" type="button" data-case-filter="all" data-ru="Все" data-en="All">Все</button>
             <button class="case-filter" type="button" data-case-filter="yandex" data-ru="Яндекс.Директ" data-en="Yandex Direct">Яндекс.Директ</button>
-            <button class="case-filter" type="button" data-case-filter="tg" data-ru="ТГ" data-en="TG">ТГ</button>
-            <button class="case-filter" type="button" data-case-filter="vk">ВК</button>
-            <button class="case-filter" type="button" data-case-filter="google" data-ru="Гугл" data-en="Google">Гугл</button>
-            <button class="case-filter" type="button" data-case-filter="fb" data-ru="ФБ" data-en="FB">ФБ</button>
+            <button class="case-filter" type="button" data-case-filter="tg">TG Ads</button>
+            <button class="case-filter" type="button" data-case-filter="vk">VK Ads</button>
+            <button class="case-filter" type="button" data-case-filter="google">Google Ads</button>
+            <button class="case-filter" type="button" data-case-filter="fb">Facebook Ads</button>
           </div>
 
           <div class="case-stack">
@@ -2772,6 +2847,11 @@
                   <p class="case-desc" data-ru="Пересобрал позиционирование, офферы и лидогенерацию. Реклама стала прогнозируемой и связанной с качеством лида." data-en="Rebuilt positioning, offers and lead generation. Advertising became predictable and tied to lead quality.">
                     Пересобрал позиционирование, офферы и лидогенерацию. Реклама стала прогнозируемой и связанной с качеством лида.
                   </p>
+                  <ul class="case-functions">
+                    <li data-ru="Пересобрал позиционирование и офферы под понятный спрос." data-en="Rebuilt positioning and offers around clear demand.">Пересобрал позиционирование и офферы под понятный спрос.</li>
+                    <li data-ru="Масштабировал Яндекс.Директ и Telegram Ads." data-en="Scaled Yandex Direct and Telegram Ads.">Масштабировал Яндекс.Директ и Telegram Ads.</li>
+                    <li data-ru="Настроил HADI-циклы, аналитику и сегментацию лидов." data-en="Set up HADI cycles, analytics and lead segmentation.">Настроил HADI-циклы, аналитику и сегментацию лидов.</li>
+                  </ul>
                 </div>
                 <div class="case-media">
                   <div class="case-slider" data-case-slider>
@@ -2813,6 +2893,15 @@
                   <p class="case-desc" data-ru="Переработал офферы, лендинги и привлечение из нескольких каналов. Поток заявок вырос, CPL снизился в конкурентной нише." data-en="Reworked offers, landing pages and multi-channel acquisition. Requests grew and CPL dropped in a competitive niche.">
                     Переработал офферы, лендинги и привлечение из нескольких каналов. Поток заявок вырос, CPL снизился в конкурентной нише.
                   </p>
+                  <ul class="case-functions">
+                    <li data-ru="Разработал маркетинговую стратегию." data-en="Built the marketing strategy.">Разработал маркетинговую стратегию.</li>
+                    <li data-ru="Генерировал гипотезы и сегментировал аудитории." data-en="Generated hypotheses and segmented audiences.">Генерировал гипотезы и сегментировал аудитории.</li>
+                    <li data-ru="Переработал сайт и посадочные под разные сегменты." data-en="Reworked the website and landing pages for different segments.">Переработал сайт и посадочные под разные сегменты.</li>
+                    <li data-ru="Вёл рекламные кампании и контролировал экономику заявок." data-en="Managed ad campaigns and lead economics.">Вёл рекламные кампании и контролировал экономику заявок.</li>
+                  </ul>
+                  <div class="case-links">
+                    <a href="https://axioom.ru/" target="_blank" rel="noreferrer" data-ru="Сайт" data-en="Website">Сайт</a>
+                  </div>
                 </div>
                 <div class="case-media">
                   <div class="case-slider" data-case-slider>
@@ -2854,6 +2943,17 @@
                   <p class="case-desc" data-ru="Держал стабильный поток заявок при крупном бюджете и контролировал экономику канала в связке с продажами." data-en="Maintained a stable lead flow on a large budget and controlled channel economics together with sales.">
                     Держал стабильный поток заявок при крупном бюджете и контролировал экономику канала в связке с продажами.
                   </p>
+                  <ul class="case-functions">
+                    <li data-ru="Создавал лендинги под разные офферы и сегменты." data-en="Created landing pages for different offers and segments.">Создавал лендинги под разные офферы и сегменты.</li>
+                    <li data-ru="Управлял командой из 6 специалистов." data-en="Managed a team of 6 specialists.">Управлял командой из 6 специалистов.</li>
+                    <li data-ru="Отвечал за медиапланирование и анализ конкурентов." data-en="Handled media planning and competitor analysis.">Отвечал за медиапланирование и анализ конкурентов.</li>
+                    <li data-ru="Связывал маркетинг с отделом продаж." data-en="Connected marketing with the sales team.">Связывал маркетинг с отделом продаж.</li>
+                  </ul>
+                  <div class="case-links">
+                    <a href="https://mastera-remonta.com/" target="_blank" rel="noreferrer" data-ru="Сайт" data-en="Website">Сайт</a>
+                    <span>Avito</span>
+                    <span data-ru="Профи.ру" data-en="Profi.ru">Профи.ру</span>
+                  </div>
                 </div>
                 <div class="case-media">
                   <div class="case-slider is-nda" data-case-slider>
@@ -2898,6 +2998,11 @@
                   <p class="case-desc" data-ru="Google Ads и Facebook / Instagram*: запуск заявок по нескольким гео с контролем стоимости и качества лида." data-en="Google Ads and Facebook / Instagram*: lead generation across several geos with CPL and lead quality control.">
                     Google Ads и Facebook / Instagram*: запуск заявок по нескольким гео с контролем стоимости и качества лида.
                   </p>
+                  <ul class="case-functions">
+                    <li data-ru="Запускал Google Ads по Дубаю, Канаде и Турции." data-en="Launched Google Ads across Dubai, Canada and Turkey.">Запускал Google Ads по Дубаю, Канаде и Турции.</li>
+                    <li data-ru="Вёл Facebook / Instagram Ads* и контролировал стоимость заявки." data-en="Managed Facebook / Instagram Ads* and controlled CPL.">Вёл Facebook / Instagram Ads* и контролировал стоимость заявки.</li>
+                    <li data-ru="Отслеживал конверсию в квалифицированный лид." data-en="Tracked conversion to qualified lead.">Отслеживал конверсию в квалифицированный лид.</li>
+                  </ul>
                   <small class="case-note" data-ru="*Facebook и Instagram принадлежат Meta Platforms Inc., признанной экстремистской организацией и запрещённой в РФ." data-en="*Facebook and Instagram belong to Meta Platforms Inc., which is recognized as extremist and banned in Russia.">*Facebook и Instagram принадлежат Meta Platforms Inc., признанной экстремистской организацией и запрещённой в РФ.</small>
                 </div>
                 <div class="case-media">
@@ -2936,10 +3041,23 @@
                   <p class="case-desc" data-ru="Яндекс.Директ, SEO, WB/OZON и работа над сайтом: трафик, продажи и товарная аналитика в одной системе." data-en="Yandex Direct, SEO, WB/OZON and website work: traffic, sales and product analytics in one system.">
                     Яндекс.Директ, SEO, WB/OZON и работа над сайтом: трафик, продажи и товарная аналитика в одной системе.
                   </p>
+                  <ul class="case-functions">
+                    <li data-ru="Разработал маркетинговую стратегию и анализировал конкурентов." data-en="Built the marketing strategy and analyzed competitors.">Разработал маркетинговую стратегию и анализировал конкурентов.</li>
+                    <li data-ru="Вёл контекстную рекламу и работал над сайтом." data-en="Managed contextual ads and improved the website.">Вёл контекстную рекламу и работал над сайтом.</li>
+                    <li data-ru="Организовывал коллаборации, блогеров и мероприятия." data-en="Organized collaborations, bloggers and events.">Организовывал коллаборации, блогеров и мероприятия.</li>
+                    <li data-ru="Работал с карточками на маркетплейсах и рекламой WB/OZON." data-en="Worked with marketplace cards and WB/OZON ads.">Работал с карточками на маркетплейсах и рекламой WB/OZON.</li>
+                  </ul>
+                  <div class="case-links">
+                    <a href="https://www.luxalto.ru/?ysclid=mqruqa7yla953075600" target="_blank" rel="noreferrer" data-ru="Сайт" data-en="Website">Сайт</a>
+                    <span>WB/OZON</span>
+                  </div>
                 </div>
                 <div class="case-media">
                   <div class="case-slider" data-case-slider>
                     <div class="case-slider-track">
+                      <div class="case-slide">
+                        <img src="./assets/case-luxalto-report.png" alt="LuxAlto: сводная таблица по товарам и продажам" />
+                      </div>
                       <div class="case-slide">
                         <img src="./assets/case-luxalto-marketplace.jpg" alt="LuxAlto: продажи и заказы на маркетплейсе" />
                       </div>
@@ -2951,6 +3069,7 @@
                     <button class="slider-arrow next" type="button" aria-label="Следующий скрин" data-slider-next>›</button>
                     <div class="slider-dots" aria-hidden="true">
                       <button class="slider-dot is-active" type="button" data-slider-dot></button>
+                      <button class="slider-dot" type="button" data-slider-dot></button>
                       <button class="slider-dot" type="button" data-slider-dot></button>
                     </div>
                   </div>
@@ -2970,9 +3089,19 @@
               <div class="case-body">
                 <div>
                   <h3 class="case-title" data-ru="Школа по созданию бренда одежды" data-en="School for launching a clothing brand">Школа по созданию бренда одежды</h3>
-                  <p class="case-desc" data-ru="Воронки в Telegram и VK, вебинары, сайты, соцсети, таргет VK и Яндекс.Директ для заявок на обучение." data-en="Telegram and VK funnels, webinars, websites, social media, VK targeting and Yandex Direct for education leads.">
-                    Воронки в Telegram и VK, вебинары, сайты, соцсети, таргет VK и Яндекс.Директ для заявок на обучение.
+                  <p class="case-desc" data-ru="Трафик на вебинары, соцсети и воронки: 25 тыс. подписчиков ВК и 15 тыс. в Telegram-канале." data-en="Traffic to webinars, social media and funnels: 25K VK followers and 15K Telegram subscribers.">
+                    Трафик на вебинары, соцсети и воронки: 25 тыс. подписчиков ВК и 15 тыс. в Telegram-канале.
                   </p>
+                  <ul class="case-functions">
+                    <li data-ru="Создавал воронки в Telegram и VK." data-en="Built funnels in Telegram and VK.">Создавал воронки в Telegram и VK.</li>
+                    <li data-ru="Вёл трафик на вебинары и социальные сети." data-en="Drove traffic to webinars and social media.">Вёл трафик на вебинары и социальные сети.</li>
+                    <li data-ru="Участвовал в создании вебинаров и сайтов." data-en="Took part in creating webinars and websites.">Участвовал в создании вебинаров и сайтов.</li>
+                    <li data-ru="Работал с соцсетями, VK Ads и Яндекс.Директ." data-en="Worked with social media, VK Ads and Yandex Direct.">Работал с соцсетями, VK Ads и Яндекс.Директ.</li>
+                  </ul>
+                  <div class="case-links">
+                    <a href="https://vk.com/sewing_man_club" target="_blank" rel="noreferrer">VK</a>
+                    <a href="https://t.me/sewing_man" target="_blank" rel="noreferrer">Telegram</a>
+                  </div>
                 </div>
                 <div class="case-media">
                   <div class="case-slider" data-case-slider>
@@ -3000,7 +3129,7 @@
                 <span class="case-meta" data-ru="Онлайн-марафон Мой Бизнес" data-en="My Business online marathon">Онлайн-марафон Мой Бизнес</span>
                 <div class="case-metrics">
                   <span data-ru="150 тыс. ₽ бюджет" data-en="150K ₽ budget">150 тыс. ₽ бюджет</span>
-                  <span data-ru="988 тыс. просмотров" data-en="988K views">988 тыс. просмотров</span>
+                  <span data-ru="968 тыс. просмотров" data-en="968K views">968 тыс. просмотров</span>
                   <span data-ru="3,1 млн охват" data-en="3.1M reach">3,1 млн охват</span>
                 </div>
               </div>
@@ -3010,6 +3139,15 @@
                   <p class="case-desc" data-ru="Продвижение онлайн-марафона ВКонтакте: охват, просмотры и вовлечение на длинный эфир." data-en="Promotion of a VK online marathon: reach, views and engagement for a long live stream.">
                     Продвижение онлайн-марафона ВКонтакте: охват, просмотры и вовлечение на длинный эфир.
                   </p>
+                  <ul class="case-functions">
+                    <li data-ru="Настроил VK Ads на 10-часовой эфир." data-en="Set up VK Ads for a 10-hour live stream.">Настроил VK Ads на 10-часовой эфир.</li>
+                    <li data-ru="Вёл трафик на эфир и сообщество." data-en="Drove traffic to the stream and community.">Вёл трафик на эфир и сообщество.</li>
+                    <li data-ru="Контролировал охват, просмотры и вовлечение." data-en="Tracked reach, views and engagement.">Контролировал охват, просмотры и вовлечение.</li>
+                  </ul>
+                  <div class="case-links">
+                    <a href="https://vk.com/moibizbiz" target="_blank" rel="noreferrer" data-ru="Сообщество VK" data-en="VK community">Сообщество VK</a>
+                    <a href="https://vkvideo.ru/video-184048555_456239848" target="_blank" rel="noreferrer" data-ru="Видео" data-en="Video">Видео</a>
+                  </div>
                 </div>
                 <div class="case-media">
                   <div class="case-slider" data-case-slider>
