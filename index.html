@@ -3274,7 +3274,7 @@
       let activeCaseFilter = "all";
       let casesExpanded = false;
       const isLocalPreview = ["127.0.0.1", "localhost"].includes(window.location.hostname) || window.location.protocol === "file:";
-      const LEAD_ENDPOINT = "";
+      const LEAD_ENDPOINT = "/api/lead";
 
       function applyLang(lang) {
         document.documentElement.lang = lang;
@@ -3555,22 +3555,21 @@
         leadSubmitButton.disabled = true;
 
         try {
-          if (!LEAD_ENDPOINT) {
-            if (isLocalPreview) {
-              leadForm.reset();
-              formStatus.textContent = messages.success;
-              return;
-            }
-
-            throw new Error("Lead endpoint is not configured");
+          if (isLocalPreview) {
+            leadForm.reset();
+            formStatus.textContent = messages.success;
+            return;
           }
 
-          await fetch(LEAD_ENDPOINT, {
+          const response = await fetch(LEAD_ENDPOINT, {
             method: "POST",
-            mode: "no-cors",
-            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload),
           });
+
+          if (!response.ok) {
+            throw new Error("Lead API request failed");
+          }
 
           leadForm.reset();
           formStatus.textContent = messages.success;
