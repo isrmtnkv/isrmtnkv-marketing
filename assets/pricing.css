@@ -1,0 +1,30 @@
+/* Pricing follows the existing cobalt / white visual identity. */
+.pricing-grid{gap:20px;align-items:stretch}
+.price-card{padding:32px;display:grid;grid-template-rows:auto auto auto 58px 68px auto 1fr auto;align-content:start;align-items:start;row-gap:0}
+.price-card .price-value{font-size:clamp(30px,3vw,43px);margin:26px 0 12px;white-space:nowrap}
+.price-card .price-value>span{font-size:.56em;letter-spacing:-.02em}
+.price-card .price-period{font-size:12px;line-height:1.8;margin:0;color:var(--muted)}
+.price-card .price-period strong{font-weight:500;color:var(--ink)}
+.price-card-accent .price-period{color:#d5ddff}.price-card-accent .price-period strong{color:white}
+.price-card>p:not([class]){font-size:14px;line-height:1.65;margin:12px 0 0}
+.price-card ul{margin:26px 0 20px}.price-card .price-detail{margin:0 0 28px;font-size:12px;line-height:1.7;min-height:62px}
+.price-card .button{align-self:end}
+.bundle-offer{position:relative;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:32px 64px;margin-top:32px;padding:48px;border:1px solid #cbd5f7;border-radius:20px;background:#eaf0ff;color:var(--ink);scroll-margin-top:110px}
+.bundle-label{display:inline-block;font-size:11px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--blue)}
+.bundle-copy h3{font-size:clamp(36px,4.3vw,58px);font-weight:500;line-height:1.08;letter-spacing:-.055em;margin:24px 0 20px}
+.bundle-copy>p{font-size:16px;line-height:1.7;color:#535f76;max-width:540px}
+.bundle-includes{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:25px;font-size:12px;color:#273655}
+.bundle-includes>span:not([aria-hidden]){padding:8px 12px;border:1px solid #c3ceeb;border-radius:6px;background:#ffffff66}
+.bundle-copy .bundle-saving{font-size:12px;margin-top:16px;color:var(--blue)}
+.bundle-total{align-self:center;border-left:1px solid #c7d2ed;padding-left:48px;min-width:0}
+.bundle-price-top{display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:12px;color:#535f76}
+.bundle-badge{display:inline-block;background:var(--blue);color:white;border-radius:28px;padding:9px 16px;font-size:22px;letter-spacing:-.04em;line-height:1}
+.bundle-old{font-size:16px;color:#6d7890;margin-top:24px}.bundle-old s{text-decoration-thickness:1px}
+.bundle-price{font-size:clamp(40px,4.7vw,64px);font-weight:500;letter-spacing:-.055em;line-height:1.15;margin:8px 0 26px;white-space:nowrap}
+.bundle-price>span{font-size:.6em}.bundle-price .bundle-from{font-size:.38em;letter-spacing:-.02em;color:#535f76;font-weight:400}
+.bundle-total .button{width:100%;justify-content:space-between;font-size:14px}
+.bundle-terms{grid-column:1/-1;padding-top:24px;border-top:1px solid #c7d2ed;font-size:11px;line-height:1.8;color:#626f87;max-width:none}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:1100px){.price-card{padding:24px;grid-template-rows:auto auto auto 78px 88px auto 1fr auto}.price-card .price-value{font-size:30px}.price-card .price-detail{min-height:84px}.bundle-offer{gap:28px 32px;padding:32px}.bundle-total{padding-left:30px}.bundle-price{font-size:48px}}
+@media(max-width:760px){.price-card{padding:28px;display:flex;flex-direction:column}.price-card .price-value{font-size:40px}.price-card .price-period{margin-bottom:14px}.price-card>p:not([class]){margin-top:0}.price-card .price-detail{min-height:0;margin-bottom:24px}.price-card .button{align-self:stretch}.bundle-offer{grid-template-columns:1fr;padding:28px;gap:26px;margin-top:24px;border-radius:18px}.bundle-copy h3{font-size:38px;margin:20px 0 18px}.bundle-copy>p{font-size:14px}.bundle-copy>p br{display:none}.bundle-includes{gap:8px;font-size:11px;margin-top:20px}.bundle-total{border-left:0;border-top:1px solid #c7d2ed;padding:24px 0 0}.bundle-old{margin-top:20px}.bundle-price{font-size:52px}.bundle-terms{font-size:10px;padding-top:22px}.bundle-price-top{font-size:12px}}
+@media(max-width:360px){.price-card .price-value{font-size:34px}.bundle-offer{padding:22px}.bundle-copy h3{font-size:32px}.bundle-price{font-size:44px}}
